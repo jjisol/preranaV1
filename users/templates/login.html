@@ -1,0 +1,68 @@
+{% load static %}
+
+{% load socialaccount %}
+{% providers_media_js %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/floating-labels.css' %}">
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <form class="form-signin" method="post">
+      {% csrf_token %}
+      <div class="container marketing">
+      <div class="text-center mb-1">
+        <img class="mb-4" src="{%static 'img/logo.png' %}" alt="" width="250"
+        style="border-radius: 150px; -moz-border-radius: 150px; -khtml-border-radius: 150px; -webkit-border-radius: 150px;">
+      </div>
+      <input class="form-control" id="{{ form.username.id_for_label }}"
+        maxlength="15" name="{{ form.username.html_name }}" placeholder="username" type="text" />
+      <br>
+      <input class="form-control" id="{{ form.password.id_for_label }}"
+        maxlength="120" name="{{ form.password.html_name }}" placeholder="password" type="password" />
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+      <hr>
+      <div class="text-center mb-1">
+        <a id="custom-login-btn" href="{% provider_login_url 'kakao' %}">
+          <img class="img-responsive center-block" src="{% static 'img/kakao_login_button.png' %}" width="200"/>
+        </a>
+      </div>
+      <div class="text-center mb-1">
+        <a id="custom-login-btn" href="{% provider_login_url 'naver' %}">
+          <img class="img-responsive center-block" src="{% static 'img/naver_login_button.PNG' %}" width="200"/>
+        </a>
+      </div>
+      <div class="text-center">
+        <a id="custom-login-btn" href="{% provider_login_url 'google' %}">
+          <img class="img-responsive center-block" src="{% static 'img/google_login_button.PNG' %}" width="200"/>
+        </a>
+      </div>
+      <hr>
+      <div class="text-center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a href="{% url 'findUsername' %}"><button type="button" class="btn btn-outline-secondary">아이디 찾기</button></a>
+          <a href="{% url 'findPassword' %}"><button type="button" class="btn btn-outline-secondary">비밀번호 찾기</button></a>
+          <a href="{% url 'signup' %}"><button type="button" class="btn btn-outline-secondary">회원가입</button></a>
+        </div>
+      </div>
+    </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="container">
+      <div class="spacer_30">&nbsp;</div>
+      <div class="spacer_90 hidden-sm hidden-xs">&nbsp;</div>
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <p>Your account has been activated. You may go ahead and log in now.</p>
+                      <p><a class="btn btn-success" href="{% url 'signin' %}">Log in</a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}
