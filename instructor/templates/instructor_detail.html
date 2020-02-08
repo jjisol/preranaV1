@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+
+	 <!-- Header -->
+	  <header class="py-5 mb-5">
+		<div class="container h-100">
+		  <div class="row h-100 align-items-center">
+			<div class="col-lg-12">
+			</div>
+		  </div>
+		</div>
+	  </header>
+
+	  <!-- Page Content -->
+	  
+	  <div class="container">
+		<img src="{% static 'img/intro-bg.jpg' %}" class="img-fluid" alt="Responsive image">
+		<br><br><br>
+		<div class="row">
+		  <div class="col-md-8 mb-5">
+			<h2><strong>당신을 위한 프리라나</strong></h2>
+			<hr>
+			<p>프리라나는 요가와 필라테스에 관심이 있는 회원님들을 위해 탄생하였습니다. 요가, 필라테스 센터에 등록하고 싶은데 수 많은 센터들의 비교가 필요할 때, 각 종 이벤트 정보를 얻고 싶을 때 인터넷에서 하나하나 검색할 필요없이 프리라나에서 한 번에 해결하실 수 있습니다. </p>
+			<p>수 많은 센터들의 후기가 궁금하셨나요? 블로그 협찬인지 아닌지 걱정 되셨나요? 남성이라는 이유로 등록이 꺼려지셨나요? 가격은 또 어떨지 할인이나 이벤트는 없는건지 시간표는 나와 잘 맞을지 프리라나가 해결해 드리겠습니다.</p>
+			<a class="btn btn-outline-success btn-lg" href="{% url 'center_intro' %}">맞춤 센터 찾아보기 &raquo;</a>
+		  </div>
+		  <div class="col-md-4 mb-5">
+			<h2>Contact Us</h2>
+			<hr>
+			<address>
+			  <strong>Start with PRERANA</strong>
+			  <br>서울시 어쩌고 어디 무슨 건물 몇층 몇호
+			  <br>
+			</address>
+			<address>
+			  <abbr title="Phone">P:</abbr>
+			  (123) 456-7890
+			  <br>
+			  <abbr title="Email">E:</abbr>
+			  <a href="mailto:#">name@example.com</a>
+			</address>
+		  </div>
+		</div>
+	  </div>
+
+{% endblock %}

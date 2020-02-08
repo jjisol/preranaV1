@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<form method="post">
+  <div class="container">
+      <div class="spacer_30">&nbsp;</div>
+      <div class="spacer_90 hidden-sm hidden-xs">&nbsp;</div>
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <p>이메일 인증 링크가 유효하지 않습니다. 메일을 재발송하시겠습니까?</p>
+                      <p><a class="btn btn-warning" type="submit">재발송</a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+{% endblock %}
