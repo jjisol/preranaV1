@@ -357,6 +357,7 @@
 }
 
 .irs-disabled {
+
 }
 
 .masthead {
@@ -418,12 +419,3 @@
   }
 }
 
-vr { 
-    display: block;
-    width:10px;
-    background-color:#000;
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:150px;
-}
