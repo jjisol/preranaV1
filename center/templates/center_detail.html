@@ -1,263 +1,145 @@
 {% extends 'home/base.html' %}
-{% load socialaccount %}
+{% load static %}
 {% block content %}
 
+	 <!-- Header -->
+	  <header class="py-4 mb-5">
+		<div class="container h-100">
+		  <div class="row h-100 align-items-center">
+			<div class="col-lg-12">
+			</div>
+		  </div>
+		</div>
+	  </header>
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="{{ center.image1.url }}" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-        <div class="container">
-          <div class="carousel-caption text-left">
-            <h1>Example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="{{ center.image2.url }}" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="{{ center.image3.url }}" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-        <div class="container">
-          <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+	  <!-- Page Content -->
+	  
+	  <div class="container">
+		<div class="row justify-content-between">
+			<div class="col-3">
+				<div class="position-fixed p-3 border">
+					<div class="row">
+						<div class="col">
+							<h2>센터 정보</h2>
+						</div>
+					</div>
+					<div class="row">
+					  <div class="col">
+						<hr>
+						<address>
+							<span>센터명 </span>
+							<h3>행복한 필라테스 숙대입구역점</h3>
+						</address><br>
+						<address>
+						  <p title="phone">전화번호: 010-0000-0000</p>
+						  <p title="site">사이트:
+						  <a href="mailto:#">https://blog.naver.com/preranakorea/221799017845</a>
+						  </p>
+						  <p title="location">위치:
+						  서울시 마포구 독막로20 7층
+						  </p>
+						</address>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-7">
+				<div class="row">
+					<div class="col">
+						<h2>센터 사진</h2><hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+					</div>
+				</div>
+				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+					  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner" role="listbox">
+					  <!-- Slide One - Set the background image for this slide in the line below -->
+					  <div class="carousel-item active" style="background-image: url('https://postfiles.pstatic.net/MjAyMDAyMDZfMjEw/MDAxNTgwOTkyMjE0Nzkz.RlqxRrTI93no5zitdrrN4m3gL7mmtlsDVSwoFuegN_og.RRm1QDcyl1FwPDVNH0Q0-kMZ2lWxwjFTnhgxtFpn1nYg.PNG.preranakorea/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-02-06_%EC%98%A4%ED%9B%84_9.28.05.png?type=w773')">
+						
+					  </div>
+					  <!-- Slide One - Set the background image for this slide in the line below -->
+					  <div class="carousel-item" style="background-image: url('https://postfiles.pstatic.net/MjAyMDAyMDZfNjcg/MDAxNTgwOTkyMjIzMjQ3.JMp7BKXz9AOA4FlAejdB1A4BPR0xSOL3tUD98h10MRog.3WfV5CtzEqjjRLRod4dR4r4dB64e-AzcStx2E7BJAsUg.PNG.preranakorea/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-02-06_%EC%98%A4%ED%9B%84_9.28.21.png?type=w773')">
+						
+					  </div>
+					  <!-- Slide One - Set the background image for this slide in the line below -->
+					  <div class="carousel-item" style="background-image: url('https://postfiles.pstatic.net/MjAyMDAyMDZfMTE0/MDAxNTgwOTkyMjI3NTIw.z9YQHC7m_M9dVamaF-QJtmJSclpWB1RECJkF6QFtD4kg.tUzgdNR3rRqcUfdIvofOL5dpmR_T5y89ZkkqKZWdiE8g.PNG.preranakorea/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-02-06_%EC%98%A4%ED%9B%84_9.28.33.png?type=w773')">
+					
+					  </div>
 
-  <div class="container marketing">
-    <div class="row mb-2">
-      <div class="col-md-6">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <h4 class="mb-0">이용가격</h4><hr>
-            <p class="card-text mb-auto">{{ center.price }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <h4 class="mb-0">이용정보</h4><hr>
-            <p class="mb-auto">{{ center.info }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+					</div>
+					<a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+						  <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+						  <span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+						  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						  <span class="sr-only">Next</span>
+					</a>
+			    </div>
+			    <br><br>
+				<div class="row">
+					<div class="col">
+						<h2>이용 정보</h2><hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<ul>
+							<li>여성전용</li>
+							<li>주차공간 없음</li>
+							<li>운영시간: 오전9시 ~ 오후10시</li>
+						</ul>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col">
+						<h2>이용 가격</h2><hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<ul>
+							<li>1개월: 10만원</li>
+						</ul>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col">
+						<h2>강사진 및 시간표</h2><hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<ul>
+							<li>강사진: 정지솔, 한혜원</li>
+							<li>시간표<img src="https://blogfiles.pstatic.net/MjAyMDAyMDNfNDQg/MDAxNTgwNzExNjAyMzI2.RTdW7GZ7Pg-YqG_9NnEUMfVlTFFm3C9CPTwKKymUA7cg.ivTby99gGyX3OJ1GG-_u2re63WZf5IpEvRVbOnIDSacg.PNG.yogalight/%EC%BA%A1%EC%B2%98%EC%8B%9C%EA%B0%84%ED%91%9C20.2.PNG?type=w1"></li>
+						</ul>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col">
+						<h2>이벤트</h2><hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<ul>
+							<li>준비중입니다.</li>
+						</ul>
+					</div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	  
+	  
 
-    <hr class="featurette-divider">
-    <h3>강사진</h3><br></br>
-    <div class="swiper-container">
-    <div class="swiper-wrapper">
-      {% for instructor in instructors %}
-      <div class="swiper-slide">
-        <div class="card" style="width:250px height:500px">
-            <a href="{% url 'instructor_detail' id=instructor.id %}"><img class="card-img-top" src="{{ instructor.image.url }}" width="200" height="250"></a>
-            <div class="card-body" style="height:200px">
-              <div class="card-title mb-1 text-muted">{{ instructor.name }}</div>
-              <p class="card-text">{{ instructor.greeting }}</p>
-            </div>
-        </div>
-      </div>
-      {% endfor %}
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-              <a href="/instructor_details"><img src="http://ktsmemo.cdn3.cafe24.com/p/0593.jpg" width="200" height="250"></a>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+{% endblock %}
 
-    <!-- 네비게이션 -->
-    <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-    <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
 
-    </div>
-
-    <hr class="featurette-divider">
-    <h3>시간표</h3><br>
-    <div class="row mb-1">
-      <div class="col-md-12">
-        <div class="card">
-          <img class="card-img-top" src="{{ center.schedule.url }}">
-        </div>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-    <div class="row mb-2">
-      <div class="col-md-6">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <h4 class="mb-0">전화</h4><br>
-            <p class="mb-auto">{{ center.phone }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <h4 class="mb-0">주소</h4><br>
-            <p class="mb-auto">{{ center.address }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-    <div class="form-inline">
-      <h3>리뷰</h3>
-      <a class="btn btn-primary"
-      href="{% url 'add_review_to_center' id=center.id %}">리뷰쓰기</a>
-    </div>
-    <p>리뷰가 {{ center.center_reviews.count }}개 있습니다.</p><br>
-    {% for review in center.center_reviews.all %}
-      {% if forloop.counter <= 3 %}
-        <div class="review row mb-1">
-          <div class="col-md-12">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col p-4 d-flex flex-column position-static">
-                <div class="form-inline">
-                  <h5>{{ review.user }}</h5>
-                </div>
-                <h8 class="date text-muted col-offset-md-12">{{ review.created_date }}</h8>
-                <p class="card-text mb-auto">{{ review.text|linebreaks }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {% empty %}
-    <div class="review row mb-1">
-      <div class="col-md-12">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <p>리뷰가 없습니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-
-    <hr class="featurette-divider">
-    <h3>사이트 주소</h3><br>
-    <div class="row mb-1">
-      <div class="col-md-12">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <h5>{{ center.name }}</h5><br>
-            <a href="{{ center.site }}" class="stretched-link">{{ center.site }}/a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    new Swiper('.swiper-container', {
-
-    	slidesPerView : 4, // 동시에 보여줄 슬라이드 갯수
-    	spaceBetween : 30, // 슬라이드간 간격
-    	slidesPerGroup : 4, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
-
-    	// 그룹수가 맞지 않을 경우 빈칸으로 메우기
-    	// 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
-    	loopFillGroupWithBlank : true,
-
-    	loop : true, // 무한 반복
-
-    	pagination : { // 페이징
-    		el : '.swiper-pagination',
-    		clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-    	},
-    	navigation : { // 네비게이션
-    		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
-    		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
-    	},
-    });
-
-  </script>
-  {% endblock %}

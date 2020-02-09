@@ -1,0 +1,193 @@
+{% extends 'home/base.html' %}
+{% load socialaccount %}
+{% block content %}
+
+
+<header class="py-5 mb-5">
+	<div class="container h-100">
+	  <div class="row h-100 align-items-center">
+		<div class="col-lg-12">
+		</div>
+	  </div>
+	</div>
+</header>
+
+<article>
+	<!-- Page Content 1 -->
+	<div class="container">
+		<div class="text-center">
+			<p style="font-weight:bold; color:#000;">나에게 꼭 필요한 맞춤 센터를 검색해보세요.</p>
+			<hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+		</div>
+		<form>
+		<ul class="list-group">
+		  <li class="list-group-item">
+			<div class="form-group row">
+				<label class="col-2 col-form-label"><strong>지역</strong></label>
+				<div class="col-sm-2">
+					<select onchange="categoryChange(this)" class="form-control" id="exampleFormControlSelect1">
+					  <option>시/도</option>
+					  <option value="1">서울</option>
+					  <option value="2">경기</option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<select class="form-control" id="location_detail">
+					  <option>구/시</option>
+					</select>
+				</div>
+			</div>
+		  </li>
+		  <li class="list-group-item">
+			<div class="form-group row">
+				<label class="col-2 col-form-label"><strong>운동 종류</strong></label>
+				
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="yoga">
+					  <label class="form-check-label" for="inlineCheckbox1">요가</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="pilates">
+					  <label class="form-check-label" for="inlineCheckbox2">필라테스</label>
+					</div>
+				
+			</div>
+		  </li>
+		  <li class="list-group-item">
+			<div class="form-group row">
+				<label class="col-2 col-form-label"><strong>수업 유형</strong></label>
+				
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="yoga">
+					  <label class="form-check-label" for="inlineCheckbox3">여성전용</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="pilates">
+					  <label class="form-check-label" for="inlineCheckbox4">여남공용</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="pilates">
+					  <label class="form-check-label" for="inlineCheckbox5">남성전용</label>
+					</div>
+			</div>
+		  </li>
+		</ul>
+		<br>
+		<div class="d-flex justify-content-center">
+			<button type="submit" class="btn btn-lg btn-outline-success"><strong>검 색</strong></button>
+		</div>
+		</form>
+		<div class="text-center">
+			<hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+		</div>
+	</div>
+	
+	<!-- Page Content 2 -->
+	<div class="container">
+		<p>검색 결과</p>
+	</div><br>
+	<div class="container">
+		<div class="card-deck">
+		  <div class="card">
+			<img class="card-img-top" src="{% static 'img/about/1.jpg' %}" alt="Card image cap">
+			<div class="like-position">
+				<button class="button button-like">
+				  <i class="fa fa-heart"></i>
+				</button>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title"><a href="center_detail.html" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
+				<ul style="list-style:none; padding:0;">
+				  <li>서울시 평화구 필테동 멍멍</li>
+				  <li>02-123-2344</li>
+				</ul>
+			</div>
+			<div class="card-footer">
+			  <small class="text-muted">#필라테스</small>
+			</div>
+		  </div>
+		  <div class="card">
+			<img class="card-img-top" src="{% static 'img/about/2.jpg' %}" alt="Card image cap">
+			<div class="like-position">
+				<button class="button button-like">
+				  <i class="fa fa-heart"></i>
+				</button>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title"><a href="#" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
+				<ul style="list-style:none; padding:0;">
+				  <li>서울시 평화구 필테동 멍멍</li>
+				  <li>02-123-2344</li>
+				</ul>
+			</div>
+			<div class="card-footer">
+			  <small class="text-muted">#필라테스</small>
+			</div>
+		  </div>
+		  <div class="card">
+			<img class="card-img-top" src="{% static 'img/about/3.jpg' %}" alt="Card image cap">
+			<div class="like-position">
+				<button class="button button-like">
+				  <i class="fa fa-heart"></i>
+				</button>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title"><a href="#" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
+				<ul style="list-style:none; padding:0;">
+				  <li>서울시 평화구 필테동 멍멍</li>
+				  <li>02-123-2344</li>
+				</ul>
+			</div>
+			<div class="card-footer">
+			  <small class="text-muted">#필라테스</small>
+			</div>
+		  </div>
+	</div>
+</article>
+
+  <!-- 지솔이가 쓴 슬라이드 코드 -->	
+  <script type="text/javascript">
+    new Swiper('.swiper-container', {
+
+    	slidesPerView : 4, // 동시에 보여줄 슬라이드 갯수
+    	spaceBetween : 30, // 슬라이드간 간격
+    	slidesPerGroup : 4, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+
+    	// 그룹수가 맞지 않을 경우 빈칸으로 메우기
+    	// 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
+    	loopFillGroupWithBlank : true,
+
+    	loop : true, // 무한 반복
+
+    	pagination : { // 페이징
+    		el : '.swiper-pagination',
+    		clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+    	},
+    	navigation : { // 네비게이션
+    		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+    		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+    	},
+    });
+
+  </script>
+  <!-- 혜원이가 쓴 셀렉트박스 코드 -->
+  <script>
+		function categoryChange(e){
+			var detail_1 = ["용산구", "종로구", "중구", "서대문구"];
+			var detail_2 = ["용인시", "광주시", "의정부시", "남양주시"];
+			var target = document.getElementById("location_detail");
+			
+			if(e.value=="1") var next = detail_1;
+			else if(e.value=="2") var next = detail_2;
+			
+			target.options.length=0;
+			
+			for(x in next){
+				var opt = document.createElement("option");
+				opt.value=next[x];
+				opt.innerHTML =next[x];
+				target.appendChild(opt);
+			}
+		}
+	</script>
+  {% endblock %}

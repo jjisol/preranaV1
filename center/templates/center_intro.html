@@ -1,78 +1,45 @@
 {% extends 'home/base.html' %}
-
+{% load static %}
 {% block content %}
 
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-        <div class="container">
-          <div class="carousel-caption text-left">
-            <h1>Example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-        <div class="container">
-          <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
 
-  <div class="container marketing">
-    <div class="row mb-2">
-      <div class="col-md-4">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success">PRERANA</strong>
-            <h3 class="mb-0">지도로 보기</h3>
-            <p class="card-text mb-auto">요가 센터들을 검색을 통해 지도로 볼 수 있습니다.</p>
-            <a href="{% url 'view_on_map' %}" class="stretched-link">지도로 보기</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success">PRERANA</strong>
-            <h3 class="mb-0">맞춤수업만 보기</h3>
-            <p class="card-text mb-auto">요가 센터들을 선택한 수업에 따라 맞춤으로 볼 수 있습니다.</p>
-            <a href="/view_on_custom_class" class="stretched-link">맞춤수업만 보기</a>
-          </div>
-        </div>
+<header class="py-2 my-2">
+	<div class="container h-100">
+	  <div class="row h-100 align-items-center">
+		<div class="col-lg-12">
+		</div>
+	  </div>
+	</div>
+</header>
+<article>
+	<!-- content1 -->
+	<div class="masthead">
+      <div class="intro-text">
+        <div class="intro-lead-in">운동 부족인 당신에게 필요한 맞춤센터 찾기</div>
+        <div class="intro-heading text-uppercase">프리라나와 함께하세요!</div>
       </div>
     </div>
-  </div>
-  {% endblock %}
+	<!-- content2 -->
+	
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-sm-6">
+				<img src="{% static 'img/intro-map.png' %}" width=200><br><br>
+				<h5 class="card-title"><strong>지도로 검색하기</strong></h5>
+				<p class="card-text">내가 원하는 지역, 지하철 명으로 검색하세요. <br>근처 요가, 필라테스 센터를 보여드립니다.</p><br>
+				<a href="{% url 'view_on_map' %}" class="btn btn-success">지도로 검색하기</a>
+			</div>
+			<div class="col-sm-6">
+				<img src="{% static 'img/intro-check.png' %}" width=200><br><br>
+				<h5 class="card-title"><strong>맞춤필터로 검색하기</strong></h5>
+				<p class="card-text">나에게 필요한 조건을 체크하세요. <br>해당 조건을 포함한 요가, 필라테스 센터를 보여드립니다.</p><br>
+				<a href="center_filter.html" class="btn btn-success">맞춤필터로 검색하기</a>
+			</div>
+		</div>
+	</div>
+
+</article>
+
+
+{% endblock %}
