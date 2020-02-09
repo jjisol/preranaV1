@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'home',
     'users',
     'center',
-    'instructor',
-    'onedayclass',
 
     'allauth',
     'allauth.account',

@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Center
-from instructor.models import Instructor
 from django.contrib import messages
 from django.db.models import Q
 
@@ -10,8 +9,8 @@ def intro(request):
 
 def detail(request, id):
     center = get_object_or_404(Center, id=id)
-    instructors = Instructor.objects.filter(center=center.id)
-    return render(request, 'center_detail.html', {'center':center, 'instructors':instructors})
+    #instructors = Instructor.objects.filter(center=center.id)
+    return render(request, 'center_detail.html', {'center':center, 'instructors':center})
 
 def view_on_map(request):
     qs = Center.objects.all()
