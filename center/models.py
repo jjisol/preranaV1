@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from multiselectfield import MultiSelectField
 
 class Center(models.Model):
     TYPE_CHOICES = [('1', '요가'), ('2', '필라테스'),]
@@ -7,9 +8,8 @@ class Center(models.Model):
     CENTER_CHOICES = [('1', '여성전용'), ('2', '여남공용'), ('3', '남성전용')]
 
     name = models.CharField(max_length=20, verbose_name='센터명')
-    type = models.CharField(max_length=1,
+    type = MultiSelectField(
         choices=TYPE_CHOICES,
-        default='1',
         verbose_name='센터 종류')
     detail = models.CharField(max_length=1,
         choices=CENTER_CHOICES,
@@ -28,10 +28,11 @@ class Center(models.Model):
         return self.name
 
 class CenterImage(models.Model):
-    center = models.ForeignKey(Center, on_delete=models.CASCADE, verbose_name='센터명')
+    center = models.ForeignKey(Center, on_delete=models.CASCADE,
+                    related_name='center_image', verbose_name='센터명')
     image1 = models.ImageField(null=True, verbose_name='센터 사진1', upload_to='center/img/')
     image2 = models.ImageField(null=True, verbose_name='센터 사진2', upload_to='center/img/')
     image3 = models.ImageField(null=True, verbose_name='센터 사진3', upload_to='center/img/')
 
     def __str__(self):
-        return self.center
+        return self.center.name

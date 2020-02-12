@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
-{% load socialaccount %}
+{% load static %}
+{% load widget_tweaks %}
 {% block content %}
 
 
@@ -24,51 +25,29 @@
 		  <li class="list-group-item">
 			<div class="form-group row">
 				<label class="col-2 col-form-label"><strong>지역</strong></label>
-				<div class="col-sm-2">
-					<select onchange="categoryChange(this)" class="form-control" id="exampleFormControlSelect1">
-					  <option>시/도</option>
-					  <option value="1">서울</option>
-					  <option value="2">경기</option>
-					</select>
-				</div>
-				<div class="col-sm-2">
-					<select class="form-control" id="location_detail">
-					  <option>구/시</option>
-					</select>
-				</div>
+				{% render_field filter.form.address class="form-control col-sm-4" %}
 			</div>
 		  </li>
 		  <li class="list-group-item">
 			<div class="form-group row">
 				<label class="col-2 col-form-label"><strong>운동 종류</strong></label>
-				
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="yoga">
-					  <label class="form-check-label" for="inlineCheckbox1">요가</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="pilates">
-					  <label class="form-check-label" for="inlineCheckbox2">필라테스</label>
-					</div>
-				
+					{% for choice in filter.form.type %}
+						<div class="form-check form-check-inline">
+							{{ choice.tag }}
+					  	<label class="form-check-label" >{{ choice.choice_label }}</label>
+						</div>
+					{% endfor %}
 			</div>
 		  </li>
 		  <li class="list-group-item">
 			<div class="form-group row">
 				<label class="col-2 col-form-label"><strong>수업 유형</strong></label>
-				
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="yoga">
-					  <label class="form-check-label" for="inlineCheckbox3">여성전용</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="pilates">
-					  <label class="form-check-label" for="inlineCheckbox4">여남공용</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="pilates">
-					  <label class="form-check-label" for="inlineCheckbox5">남성전용</label>
-					</div>
+					{% for choice in filter.form.detail %}
+						<div class="form-check form-check-inline">
+							{{ choice.tag }}
+							<label class="form-check-label" >{{ choice.choice_label }}</label>
+						</div>
+					{% endfor %}
 			</div>
 		  </li>
 		</ul>
@@ -81,31 +60,35 @@
 			<hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
 		</div>
 	</div>
-	
+
 	<!-- Page Content 2 -->
 	<div class="container">
 		<p>검색 결과</p>
 	</div><br>
 	<div class="container">
 		<div class="card-deck">
+			{% for center in filter.qs %}
 		  <div class="card">
-			<img class="card-img-top" src="{% static 'img/about/1.jpg' %}" alt="Card image cap">
+			{% for image in center.center_image.all %}
+			<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
+			{% endfor %}
 			<div class="like-position">
 				<button class="button button-like">
 				  <i class="fa fa-heart"></i>
 				</button>
 			</div>
 			<div class="card-body">
-				<h5 class="card-title"><a href="center_detail.html" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
+				<h5 class="card-title"><a href="center_detail.html" class="text-dark">{{ center.name }}</a></h5><br>
 				<ul style="list-style:none; padding:0;">
-				  <li>서울시 평화구 필테동 멍멍</li>
-				  <li>02-123-2344</li>
+				  <li>{{ center.address }}</li>
+				  <li>{{ center.phone }}</li>
 				</ul>
 			</div>
 			<div class="card-footer">
 			  <small class="text-muted">#필라테스</small>
 			</div>
 		  </div>
+			{% endfor %}
 		  <div class="card">
 			<img class="card-img-top" src="{% static 'img/about/2.jpg' %}" alt="Card image cap">
 			<div class="like-position">
@@ -145,7 +128,7 @@
 	</div>
 </article>
 
-  <!-- 지솔이가 쓴 슬라이드 코드 -->	
+  <!-- 지솔이가 쓴 슬라이드 코드 -->
   <script type="text/javascript">
     new Swiper('.swiper-container', {
 
@@ -176,12 +159,12 @@
 			var detail_1 = ["용산구", "종로구", "중구", "서대문구"];
 			var detail_2 = ["용인시", "광주시", "의정부시", "남양주시"];
 			var target = document.getElementById("location_detail");
-			
+
 			if(e.value=="1") var next = detail_1;
 			else if(e.value=="2") var next = detail_2;
-			
+
 			target.options.length=0;
-			
+
 			for(x in next){
 				var opt = document.createElement("option");
 				opt.value=next[x];

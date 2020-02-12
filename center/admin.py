@@ -3,7 +3,7 @@ from .models import Center, CenterImage
 from .forms import CenterForm
 
 class CenterAdmin(admin.ModelAdmin):
-    form = CenterForm
+    #form = CenterForm
     list_display = ['name', 'phone', 'address', 'site']
     search_fields = ['name', 'address']
 

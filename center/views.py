@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Center
+from .filters import CenterFilter
 from django.contrib import messages
 from django.db.models import Q
 
@@ -11,6 +12,11 @@ def detail(request, id):
     center = get_object_or_404(Center, id=id)
     #instructors = Instructor.objects.filter(center=center.id)
     return render(request, 'center_detail.html', {'center':center, 'instructors':center})
+
+def filter(request):
+    center_list = Center.objects.all()
+    center_filter = CenterFilter(request.GET, queryset=center_list)
+    return render(request, 'center_filter.html', {'filter':center_filter})
 
 def view_on_map(request):
     qs = Center.objects.all()

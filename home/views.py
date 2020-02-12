@@ -6,3 +6,6 @@ from django.views.generic import TemplateView
 
 def HomePageView(request):
     return render(request, 'home/home.html', {})
+
+def introduction(request):
+    return render(request, 'introduction.html', {})

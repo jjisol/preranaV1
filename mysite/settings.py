@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'django_filters',
     'widget_tweaks',
     'multiselectfield',
+    'rangefilter',
 
     'home',
     'users',
     'center',
+    'onedayclass',
 
     'allauth',
     'allauth.account',

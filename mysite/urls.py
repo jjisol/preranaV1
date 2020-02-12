@@ -35,7 +35,7 @@ urlpatterns = [
     #path('instructor/', include('instructor.urls')),
 
     #class management
-    #path('onedayclass/', include('onedayclass.urls')),
+    path('onedayclass/', include('onedayclass.urls')),
 
     #django admin
     path('admin/', admin.site.urls),
