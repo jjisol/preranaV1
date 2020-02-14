@@ -11,13 +11,4 @@ def filter(request):
     onedayclass_list = OnedayClass.objects.all()
     filter = OnedayClassFilter(request.GET, queryset=onedayclass_list)
 
-    sort = request.GET.get('sort', '')
-    if sort == '1':
-        filter = OnedayClassFilter(request.GET, queryset=onedayclass_list.order_by('-price'))
-    elif sort == '2':
-        filter = OnedayClassFilter(request.GET, queryset=onedayclass_list.order_by('price'))
-    elif sort == '3':
-        filter = OnedayClassFilter(request.GET, queryset=onedayclass_list.order_by('date'))
-    else:
-        filter = OnedayClassFilter(request.GET, queryset=onedayclass_list.order_by('-date'))
     return render(request, 'onedayclass_filter.html', {'filter':filter})

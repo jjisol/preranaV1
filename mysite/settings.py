@@ -78,6 +78,12 @@ EMAIL_HOST_USER = 'preranakorea@gmail.com'
 EMAIL_HOST_PASSWORD = 'prerana0909'
 EMAIL_USE_TLS = True
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework.filters.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+    )
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
