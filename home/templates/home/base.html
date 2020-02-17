@@ -60,14 +60,14 @@
 			      <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">공지사항 </a>
             </li>
-		        {% if user.is_authenticated %}
+		        {% if request.user.is_authenticated %}
             <li class="nav-item">
 			        <a class="nav-link" href="{% url 'mypage' %}">마이페이지 <span class="sr-only">(current)</span></a>
 			      </li>
 			      {% endif %}
           </ul>
           <form class="form-inline justify-content-end">
-			{% if user.is_authenticated %}
+			{% if request.user.is_authenticated %}
 			<a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'logout' %}">로그아웃</a>&nbsp
 			{% else %}
             <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signin' %}">로그인</a>&nbsp

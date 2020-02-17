@@ -49,7 +49,8 @@ def signup(request):
                     mail_subject, message, to=[to_email]
                 )
                 emailmessage.send()
-                return HttpResponse('회원가입을 완료하기 위해 이메일 주소를 확인해주세요.')
+                form = CustomUserCreationForm()
+                return render(request, 'signup.html', {'form':form, 'message':'회원가입을 완료하기 위해 이메일을 확인해주세요.'})
             else:
                 form = CustomUserCreationForm()
                 return render(request, 'signup.html', {'form':form, 'message':'비밀번호를 다시 확인해주세요.'})
@@ -72,25 +73,8 @@ def activate(request, uidb64, token):
         user.save()
         #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return render(request, 'verification.html')
-    else:
-        if request.method == "POST":
-            current_site = get_current_site(request)
-            mail_subject = 'PRERANA 회원가입 확인 메일'
-            message = render_to_string('acc_active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': force_text(urlsafe_base64_encode(force_bytes(user.id))),
-                'token': account_activation_token.make_token(user),
-            })
-            to_email = user.email
-            emailmessage = EmailMessage(
-                mail_subject, message, to=[to_email]
-            )
-            emailmessage.send()
-            return HttpResponse('회원가입을 완료하기 위해 이메일 주소를 확인해주세요.')
 
-        return render(request, 'verificationFailure.html')
-        #return HttpResponse('이메일 인증 링크가 유효하지 않습니다.')
+    return HttpResponse('이메일 인증 링크가 유효하지 않습니다.')
 
 
 @csrf_exempt
@@ -109,7 +93,7 @@ def signin(request):
             return render(request, 'login.html', {'message': '로그인에 실패했습니다. 다시 시도해주세요.', 'form': form})
     else:
         form = LoginForm()
-        return render(request, 'login.html', {'form': form, 'message': '로그인에 실패했습니다. 다시 시도해주세요.'})
+        return render(request, 'login.html', {'form': form})
 
 def mypage(request):
     information = CustomUser.objects.get(username=request.user)

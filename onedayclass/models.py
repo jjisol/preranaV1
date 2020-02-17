@@ -5,7 +5,7 @@ from django.utils import timezone
 class OnedayClass(models.Model):
     TYPE_CHOICES = [('Y', '요가'), ('P', '필라테스'),]
 
-    THEME_CHOICES = [('1', '임산부'), ('2', '키즈'),]
+    THEME_CHOICES = [('1', '일반'), ('2', '임산부'), ('3', '키즈'),]
 
     GENDER_CHOICES = [('F', '여'), ('M', '남'),]
 
