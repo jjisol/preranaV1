@@ -78,7 +78,7 @@
 				</button>
 			</div>
 			<div class="card-body">
-				<h5 class="card-title"><a href="center_detail.html" class="text-dark">{{ center.name }}</a></h5><br>
+				<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}" class="text-dark">{{ center.name }}</a></h5><br>
 				<ul style="list-style:none; padding:0;">
 				  <li>{{ center.address }}</li>
 				  <li>{{ center.phone }}</li>

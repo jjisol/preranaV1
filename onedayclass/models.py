@@ -3,7 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 class OnedayClass(models.Model):
-    TYPE_CHOICES = [('Y', '요가'), ('P', '필라테스'),]
+    TYPE_CHOICES = [('요가', '요가'), ('필라테스', '필라테스'),]
 
     THEME_CHOICES = [('1', '일반'), ('2', '임산부'), ('3', '키즈'),]
 
@@ -17,7 +17,7 @@ class OnedayClass(models.Model):
         default='F',
         verbose_name='강사 성별')
     name = models.CharField(max_length=20, verbose_name='클래스명')
-    type = models.CharField(max_length=1,
+    type = models.CharField(max_length=4,
         choices=TYPE_CHOICES,
         default='Y',
         verbose_name='클래스 종류')

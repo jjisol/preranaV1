@@ -61,14 +61,14 @@
 						<div class="card-deck">
 							{% for center in centers %}
 						  <div class="card">
-							<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
+								<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
 							<div class="like-position">
 								<button class="button button-like">
 								  <i class="fa fa-heart"></i>
 								</button>
 							</div>
 							<div class="card-body">
-								<h5 class="card-title"><a href="center_detail.html" class="text-dark">{{ center.name }}</a></h5><br>
+								<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}" class="text-dark">{{ center.name }}</a></h5><br>
 								<ul style="list-style:none; padding:0;">
 								  <li>{{ center.address }}</li>
 								  <li>{{ center.phone }}</li>
@@ -110,7 +110,7 @@
 							{% for center in centers %}
 						  <div class="card">
 							{% for image in center.center_image.all %}
-							<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
+								<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
 							{% endfor %}
 							<div class="like-position">
 								<button class="button button-like">
@@ -118,7 +118,8 @@
 								</button>
 							</div>
 							<div class="card-body">
-								<h5 class="card-title"><a href="center_detail.html" class="text-dark">{{ center.name }}</a></h5><br>
+								<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}"
+									class="text-dark">{{ center.name }}</a></h5><br>
 								<ul style="list-style:none; padding:0;">
 								  <li>{{ center.address }}</li>
 								  <li>{{ center.phone }}</li>
@@ -230,14 +231,15 @@
 						<div class="card-deck">
 							{% for onedayclass in onedayclasses %}
 						  <div class="card">
-							<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
+								<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 							<div class="like-position">
 								<button class="button button-like">
 								  <i class="fa fa-heart"></i>
 								</button>
 							</div>
 							<div class="card-body">
-								<h5 class="card-title"><a href="onedayclass_detail.html" class="text-dark">{{ onedayclass.name }}</a></h5><br>
+								<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
+									 class="text-dark">{{ onedayclass.name }}</a></h5><br>
 							    <ul style="list-style:none; padding:0;">
 								  <li>가격: {{ onedayclass.price }}</li>
 								  <li>일시: {{ onedayclass.date }}</li>

@@ -135,7 +135,8 @@
 					</button>
 				</div>
 				<div class="card-body">
-					<h5 class="card-title"><a href="onedayclass_detail.html" class="text-dark">{{ onedayclass.name }}</a></h5><br>
+					<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
+						class="text-dark">{{ onedayclass.name }}</a></h5><br>
 				    <ul style="list-style:none; padding:0;">
 					  <li>가격: {{ onedayclass.price }}</li>
 					  <li>일시: {{ onedayclass.date }}</li>

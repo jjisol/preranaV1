@@ -13,7 +13,7 @@
 	  </header>
 
 	  <!-- Page Content -->
-	  
+
 	  <div class="container">
 		<div class="row justify-content-between">
 			<div class="col-3">
@@ -28,15 +28,15 @@
 						<hr>
 						<address>
 							<span>센터명 </span>
-							<h3>행복한 필라테스 숙대입구역점</h3>
+							<h3>{{ center.name }}</h3>
 						</address><br>
 						<address>
-						  <p title="phone">전화번호: 010-0000-0000</p>
+						  <p title="phone">전화번호: {{ center.phone }}</p>
 						  <p title="site">사이트:
-						  <a href="mailto:#">https://blog.naver.com/preranakorea/221799017845</a>
+						  <a href="{{ center.site }}">{{ center.site }}</a>
 						  </p>
 						  <p title="location">위치:
-						  서울시 마포구 독막로20 7층
+						  {{ center.address }}
 						  </p>
 						</address>
 					  </div>
@@ -57,18 +57,19 @@
 					</ol>
 					<div class="carousel-inner" role="listbox">
 					  <!-- Slide One - Set the background image for this slide in the line below -->
-					  <div class="carousel-item active" style="background-image: url('https://postfiles.pstatic.net/MjAyMDAyMDZfMjEw/MDAxNTgwOTkyMjE0Nzkz.RlqxRrTI93no5zitdrrN4m3gL7mmtlsDVSwoFuegN_og.RRm1QDcyl1FwPDVNH0Q0-kMZ2lWxwjFTnhgxtFpn1nYg.PNG.preranakorea/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-02-06_%EC%98%A4%ED%9B%84_9.28.05.png?type=w773')">
-						
-					  </div>
-					  <!-- Slide One - Set the background image for this slide in the line below -->
-					  <div class="carousel-item" style="background-image: url('https://postfiles.pstatic.net/MjAyMDAyMDZfNjcg/MDAxNTgwOTkyMjIzMjQ3.JMp7BKXz9AOA4FlAejdB1A4BPR0xSOL3tUD98h10MRog.3WfV5CtzEqjjRLRod4dR4r4dB64e-AzcStx2E7BJAsUg.PNG.preranakorea/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-02-06_%EC%98%A4%ED%9B%84_9.28.21.png?type=w773')">
-						
-					  </div>
-					  <!-- Slide One - Set the background image for this slide in the line below -->
-					  <div class="carousel-item" style="background-image: url('https://postfiles.pstatic.net/MjAyMDAyMDZfMTE0/MDAxNTgwOTkyMjI3NTIw.z9YQHC7m_M9dVamaF-QJtmJSclpWB1RECJkF6QFtD4kg.tUzgdNR3rRqcUfdIvofOL5dpmR_T5y89ZkkqKZWdiE8g.PNG.preranakorea/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-02-06_%EC%98%A4%ED%9B%84_9.28.33.png?type=w773')">
-					
-					  </div>
+						{% for image in center.center_image.all %}
+					  <div class="carousel-item active" style="background-image: url({{ image.image1.url }})">
 
+					  </div>
+					  <!-- Slide One - Set the background image for this slide in the line below -->
+					  <div class="carousel-item" style="background-image: url({{ image.image2.url }})">
+
+					  </div>
+					  <!-- Slide One - Set the background image for this slide in the line below -->
+					  <div class="carousel-item" style="background-image: url({{ image.image3.url }})">
+
+					  </div>
+						{% endfor %}
 					</div>
 					<a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
 						  <span class="carousel-control-prev-icon " aria-hidden="true"></span>
@@ -88,7 +89,7 @@
 				<div class="row">
 					<div class="col">
 						<ul>
-							<li>여성전용</li>
+							<li>{{ center.info }}</li>
 							<li>주차공간 없음</li>
 							<li>운영시간: 오전9시 ~ 오후10시</li>
 						</ul>
@@ -103,7 +104,7 @@
 				<div class="row">
 					<div class="col">
 						<ul>
-							<li>1개월: 10만원</li>
+							<li>{{ center.price }}</li>
 						</ul>
 					</div>
 				</div>
@@ -117,7 +118,7 @@
 					<div class="col">
 						<ul>
 							<li>강사진: 정지솔, 한혜원</li>
-							<li>시간표<img src="https://blogfiles.pstatic.net/MjAyMDAyMDNfNDQg/MDAxNTgwNzExNjAyMzI2.RTdW7GZ7Pg-YqG_9NnEUMfVlTFFm3C9CPTwKKymUA7cg.ivTby99gGyX3OJ1GG-_u2re63WZf5IpEvRVbOnIDSacg.PNG.yogalight/%EC%BA%A1%EC%B2%98%EC%8B%9C%EA%B0%84%ED%91%9C20.2.PNG?type=w1"></li>
+							<li>시간표<img src="{{ center.image.url }}"></li>
 						</ul>
 					</div>
 				</div>
@@ -137,9 +138,7 @@
 			  </div>
 			</div>
 		</div>
-	  
-	  
+
+
 
 {% endblock %}
-
-

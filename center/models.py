@@ -3,7 +3,7 @@ from django.utils import timezone
 from multiselectfield import MultiSelectField
 
 class Center(models.Model):
-    TYPE_CHOICES = [('1', '요가'), ('2', '필라테스'),]
+    TYPE_CHOICES = [('요가', '요가'), ('필라테스', '필라테스'),]
 
     CENTER_CHOICES = [('1', '여성전용'), ('2', '여남공용'), ('3', '남성전용')]
 

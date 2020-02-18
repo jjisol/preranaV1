@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import OnedayClass
 from .filters import OnedayClassFilter
 from .forms import OnedayClassFilterForm
-# Create your views here.
-def class_detail(request, id):
+
+def detail(request, id):
     onedayclass = get_object_or_404(OnedayClass, id=id)
-    return render(request, 'class_detail.html', {'onedayclass':onedayclass})
+    return render(request, 'onedayclass_detail.html', {'onedayclass':onedayclass})
 
 def filter(request):
     onedayclass_list = OnedayClass.objects.all()
