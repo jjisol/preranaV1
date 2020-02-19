@@ -10,5 +10,5 @@ def detail(request, id):
 def filter(request):
     onedayclass_list = OnedayClass.objects.all()
     filter = OnedayClassFilter(request.GET, queryset=onedayclass_list)
-
+    
     return render(request, 'onedayclass_filter.html', {'filter':filter})

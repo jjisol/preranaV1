@@ -25,7 +25,9 @@
 			  <li class="list-group-item">
 				<div class="form-group row">
 					<label class="col-2 col-form-label"><strong>지역</strong></label>
-					{% render_field filter.form.place class="form-control col-sm-2" %}
+					{% render_field filter.form.place class="form-control col-sm-2" id="exampleFormControlSelect1" %}
+					{% render_field filter.form.place1 class="form-control col-sm-2 addr" id="서울특별시" %}
+					{% render_field filter.form.place2 class="form-control col-sm-2 addr" id="경기도" %}
 				</div>
 			  </li>
 			  <li class="list-group-item">
@@ -77,12 +79,7 @@
 					<label class="col-2 col-form-label"><strong>가격</strong></label>
 					<div class="wrapper" style="padding:20px;">
 						<div class="price-slider"><span class="form-inline">
-							{% render_field filter.form.price__lt class="form-control col-4" %}원 이하</span>
-						  <input value="0" min="0" max="100000" step="5000" type="range"/>
-						  <input value="100000" min="0" max="100000" step="5000" type="range"/>
-						  <svg width="100%" height="24">
-							<line x1="4" y1="0" x2="300" y2="0" stroke="#212121" stroke-width="20" stroke-dasharray="1 28"></line>
-						  </svg>
+							{% render_field filter.form.price__lt class="form-control col-sm-4" %}원 이하</span>
 						</div>
 					</div>
 				</div>
@@ -191,23 +188,18 @@
 
 
 	<script>
-		function categoryChange(e){
-			var detail_1 = ["용산구", "종로구", "중구", "서대문구"];
-			var detail_2 = ["용인시", "광주시", "의정부시", "남양주시"];
-			var target = document.getElementById("location_detail");
 
-			if(e.value=="1") var next = detail_1;
-			else if(e.value=="2") var next = detail_2;
+		$(function() {    // Makes sure the code contained doesn't run until
+                  //     all the DOM elements have loaded
+		$('.addr').hide();
+		document.getElementById("서울특별시").selectedIndex = 0;
+		document.getElementById("경기도").selectedIndex = 0;
+    $('#exampleFormControlSelect1').change(function(){
+        $('.addr').hide();
+        $('#' + $(this).val()).show();
+    });
 
-			target.options.length=0;
-
-			for(x in next){
-				var opt = document.createElement("option");
-				opt.value=next[x];
-				opt.innerHTML =next[x];
-				target.appendChild(opt);
-			}
-		}
+	});
 	</script>
 
 
