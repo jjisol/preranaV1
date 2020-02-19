@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<header class="py-5 mb-5">
+	<div class="container h-100">
+	  <div class="row h-100 align-items-center">
+		<div class="col-lg-12">
+		</div>
+	  </div>
+	</div>
+</header>
+  <div class="container marketing">
+    {% if request.user.is_staff %}
+    <div class="text-right">
+      <a class="btn btn-outline-primary" href="{% url 'notice_new' %}" class="top-menu">글쓰기</a>
+    </div>
+    <br>
+    {% endif %}
+    {% for notice in notices %}
+    <div class="card">
+        <div class="card-body">
+            <a href="{% url 'notice_detail' id=notice.id %}">
+              <h4 class="card-title">{{ notice.title }}</h4>
+            </a>
+            <div class="card-subtitle mb-2 text-muted">
+                작성자: {{ notice.author }}
+                날짜: {{ notice.published_date }}
+            </div>
+            <p>{{ notice.text|linebreaksbr }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% if message %}
+    <script>
+      alert('{{message}}');
+    </script>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<header class="py-5 mb-5">
+	<div class="container h-100">
+	  <div class="row h-100 align-items-center">
+		<div class="col-lg-12">
+		</div>
+	  </div>
+	</div>
+</header>
+  <div class="container marketing">
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-outline-secondary">Save</button>
+    </form>
+  </div>
+  {% if message %}
+    <script>
+      alert('{{message}}');
+    </script>
+  {% endif %}
+{% endblock %}

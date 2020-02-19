@@ -37,6 +37,9 @@ urlpatterns = [
     #class management
     path('onedayclass/', include('onedayclass.urls')),
 
+    #manager management
+    path('manager/', include('manager.urls')),
+
     #django admin
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

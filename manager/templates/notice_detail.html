@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<header class="py-5 mb-5">
+	<div class="container h-100">
+	  <div class="row h-100 align-items-center">
+		<div class="col-lg-12">
+		</div>
+	  </div>
+	</div>
+</header>
+  <div class="container marketing">
+    <div class="card">
+      <div class="card-body">
+          <h3 class="card-title">{{ notice.title }}</h3>
+          {% if notice.published_date %}
+              <div class="card-subtitle mb-2 text-muted">
+                  {{ notice.published_date }}
+              </div>
+          {% endif %}
+          <p>{{ notice.text|linebreaksbr }}</p>
+      </div>
+      <div class="card-footer text-right">
+        {% if request.user.is_staff %}
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'notice_edit' id=notice.id %}">수정</a>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'notice_remove' id=notice.id %}">삭제</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
