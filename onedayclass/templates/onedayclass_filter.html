@@ -17,7 +17,7 @@
 	    <!-- Page Content 1 -->
 		<div class="container">
 			<div class="text-center">
-				<p style="font-weight:bold; color:#000;">나에게 꼭 필요한 맞춤 센터를 검색해보세요.</p>
+				<p style="font-weight:bold; color:#000;">당신의 하루를 특별하게 만들어줄, 단 하루만 진행되는 원데이 클래스를 만나보세요.</p>
 				<hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
 			</div>
 			<form>
@@ -25,7 +25,7 @@
 			  <li class="list-group-item">
 				<div class="form-group row">
 					<label class="col-2 col-form-label"><strong>지역</strong></label>
-					{% render_field filter.form.place class="form-control col-sm-2" id="exampleFormControlSelect1" %}
+					{% render_field filter.form.place class="form-control col-sm-2" id="exampleFormControlSelect1" %} &nbsp &nbsp
 					{% render_field filter.form.place1 class="form-control col-sm-2 addr" id="서울특별시" %}
 					{% render_field filter.form.place2 class="form-control col-sm-2 addr" id="경기도" %}
 				</div>
@@ -77,20 +77,17 @@
 			  <li class="list-group-item">
 				<div class="form-group row">
 					<label class="col-2 col-form-label"><strong>가격</strong></label>
-					<div class="wrapper" style="padding:20px;">
-						<div class="price-slider"><span class="form-inline">
-							{% render_field filter.form.price__lt class="form-control col-sm-4" %}원 이하</span>
-						</div>
-					</div>
+						<span class="form-inline">
+							{% render_field filter.form.price__lt class="form-control col-6" %}&nbsp 원 이하</span>
 				</div>
 			  </li>
 				<li class="list-group-item">
 				<div class="form-group row">
 					<label class="col-2 col-form-label"><strong>정렬</strong></label>
 					{% for choice in filter.form.o %}
-						<div class="form-radio form-radio-inline">
-							{{ choice.tag }}
-							<label class="form-radio-label" >{{ choice.choice_label }}</label>
+						<div class="form-check form-check-inline">
+							{{ choice.tag }} &nbsp
+							<label class="form-check-label" >{{ choice.choice_label }}</label>
 						</div>
 					{% endfor %}
 				</div>
@@ -109,80 +106,35 @@
 	    <!-- Page Content 2 -->
 		<div class="container">
 			<div class="float-left">검색 결과</div>
-			<div class="float-right">
-			<form>
-				<select class="float-right form-control" id="sort-select" onchange="location = this.value;">
-					<option value="?sort=1">높은가격순</option>
-					<option value="?sort=2">낮은가격순</option>
-					<option value="?sort=3">마감임박순</option>
-					<option value="?sort=4">최신순</option>
-				</select>
-			</form>
-			</div>
 		</div>
 		<br><br><br>
 		<div class="container">
-			<div class="card-deck">
-				{% for onedayclass in filter.qs %}
-			  <div class="card">
-				<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
-				<div class="like-position">
-					<button class="button button-like">
-					  <i class="fa fa-heart"></i>
-					</button>
+			<div class="row">
+					{% for onedayclass in filter.qs %}
+				<div class="col-md-4">
+				  <div class="card mb-4 box-shadow" style="height:600px;">
+					<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
+					<div class="like-position">
+						<button class="button button-like">
+						  <i class="fa fa-heart"></i>
+						</button>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
+							class="text-dark">{{ onedayclass.name }}</a></h5><br>
+						<ul style="list-style:none; padding:0;">
+						  <li>가격: {{ onedayclass.price }}</li>
+						  <li>일시: {{ onedayclass.date }}</li>
+						  <li>장소: {{ onedayclass.place }}</li>
+						</ul>
+					</div>
+					<div class="card-footer">
+					  <small class="text-muted">#{{ onedayclass.type }}</small>
+					</div>
+				  </div>
 				</div>
-				<div class="card-body">
-					<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
-						class="text-dark">{{ onedayclass.name }}</a></h5><br>
-				    <ul style="list-style:none; padding:0;">
-					  <li>가격: {{ onedayclass.price }}</li>
-					  <li>일시: {{ onedayclass.date }}</li>
-					  <li>장소: {{ onedayclass.place }}</li>
-					</ul>
-				</div>
-				<div class="card-footer">
-				  <small class="text-muted">#{{ onedayclass.type }}</small>
-				</div>
-			  </div>
-				{% endfor %}
-			  <div class="card">
-				<img class="card-img-top" src="{% static 'img/about/2.jpg' %}" alt="Card image cap">
-				<div class="like-position">
-					<button class="button button-like">
-					  <i class="fa fa-heart"></i>
-					</button>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title"><a href="#" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
-				    <ul style="list-style:none; padding:0;">
-					  <li>가격: 10000원</li>
-					  <li>일시: 1월 31일</li>
-					  <li>장소: 서울시 용산구</li>
-					</ul>
-				</div>
-				<div class="card-footer">
-				  <small class="text-muted">#필라테스</small>
-				</div>
-			  </div>
-			  <div class="card">
-				<img class="card-img-top" src="{% static 'img/about/3.jpg' %}" alt="Card image cap">
-				<div class="like-position">
-					<button class="button button-like">
-					  <i class="fa fa-heart"></i>
-					</button>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title"><a href="#" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
-				    <ul style="list-style:none; padding:0;">
-					  <li>가격: 10000원</li>
-					  <li>일시: 1월 31일</li>
-					  <li>장소: 서울시 용산구</li>
-					</ul>
-				</div>
-				<div class="card-footer">
-				  <small class="text-muted">#필라테스</small>
-				</div>
-			  </div>
+					{% endfor %}
+			</div>
 		</div>
 	</article>
 
