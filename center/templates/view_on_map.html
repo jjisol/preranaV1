@@ -1,5 +1,5 @@
 {% extends 'home/base.html' %}
-
+{% load static %}
 {% block content %}
 <!DOCTYPE html>
 <html>
@@ -9,15 +9,15 @@
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 255);z-index: 1;font-size:12px;border-radius: 10px;}
+.map_wrap {position:relative;width:100%;height:750px;}
+#menu_wrap {position:absolute;width:100%;height:620px;padding-x:5px;overflow-y:auto;z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#menu_wrap hr {display: block; height: 1px; border: 0; border-top: 2px solid #2f965d;margin:3px 0;}
+.option{margin-bottom:10px; text-align: center;}
+.option p {margin:10px 0;}
+.option button {margin-left:5px;}
+#placesList {padding-left:0px; list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #A7C6AF;overflow: hidden;;min-height: 65px;}
 #placesList .item span {display: block;margin-top:4px;}
 #placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 #placesList .item .info{padding:10px 0 10px 55px;}
@@ -40,44 +40,65 @@
 #placesList .item .marker_13 {background-position: 0 -562px;}
 #placesList .item .marker_14 {background-position: 0 -608px;}
 #placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
+#pagination {margin:0px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
-.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.wrap {position: absolute;left: 0;bottom: 40px;width: 380px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info {width: 380px;height: 120px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom: 2px solid #ccc; border-right: 1px solid #ccc; text-overflow: ellipsis; overflow: hidden; background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .title {padding: 5px 0 0 10px; height: 40px; border-top-radius: 5px; color: #2f965d;  border: 2px solid #2f965d;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
-    .info .body {position: relative;overflow: hidden;}
+    .info .body {background-color: #FBFBFB;position: relative;overflow: hidden;}
     .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .ellipsis {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
     .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
     .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
 </style>
 </head>
 <body>
-<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form class="form-inline" method="get" action="">
-                    키워드 : <input type="text" name="q" value="{{ q }}" size="15">
-                    <button type="submit">검색하기</button>
-                </form>
+<header class="py-5 mb-5">
+   <div class="container h-100">
+     <div class="row h-100 align-items-center">
+      <div class="col-lg-12">
+      </div>
+     </div>
+   </div>
+</header>
+<article>
+   <div class="container-fluid">
+      <div class="row justify-content-around">
+         <div class="col col-3 ">
+            <div class="mb-2">
+               <h3>지도로 센터 검색하기</h3>
+               <span class="text-muted">둘러보고 싶은 지역을 검색하세요.</span>
             </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-</div>
+            <div class="option">
+               <div>
+                  <form class="row form-inline justify-content-center" method="get" action="">
+                     <input class="form-control col-8" type="text" name="q" value="{{ q }}">
+                     <button class="btn btn-outline-success col-3" type="submit">검색하기</button>
+                  </form>
+               </div>
+            </div>
+            <div id="menu_wrap" class="bg_white">
+               <hr>
+               <ul id="placesList"></ul>
+               <div id="pagination"></div>
+            </div>
+         </div>
+         <div class="col col-9">
+            <div class="map_wrap">
+               <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;border-radius:10px;">
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 
+</article>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f00208e764317b06b615cb607ec0207c&libraries=services"></script>
 <script>
   var markers = [];

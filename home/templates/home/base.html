@@ -22,13 +22,31 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Nanum+Myeongjo|Noto+Serif+KR&display=swap" rel="stylesheet">
-
+	  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Nanum+Myeongjo|Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <!-- Custom styles for this template -->
 
-	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+  		.swiper-container {
+  	     height:500px;
+       }
+
+      .swiper-slide {
+        text-align:center;
+  	    display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+  	    align-items:center; /* 위아래 기준 중앙정렬 */
+  	    justify-content:center; /* 좌우 기준 중앙정렬 */
+      }
+      .swiper-slide img {
+  	     max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
+  	      /* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
+      }
+    </style>
+
   </head>
   <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -46,10 +64,10 @@
               <a class="nav-link" href="{% url 'introduction' %}">프리라나 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">요가 </a>
+              <a class="nav-link" href="{% url 'yoga_detail' %}">요가 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">필라테스 </a>
+              <a class="nav-link" href="{% url 'pilates_detail' %}">필라테스 </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'center_intro' %}">센터소개 </a>
@@ -67,17 +85,14 @@
 			      {% endif %}
           </ul>
           <form class="form-inline justify-content-end">
-			{% if request.user.is_authenticated %}
-			<a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'logout' %}">로그아웃</a>&nbsp
-			{% else %}
+			    {% if request.user.is_authenticated %}
+			       <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'logout' %}">로그아웃</a>&nbsp
+			    {% else %}
             <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signin' %}">로그인</a>&nbsp
             <a id="navbtn1" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signup' %}">회원가입</a>
-			{% endif %}
-
+			    {% endif %}
           </form>
         </div>
-
-
     </nav>
 
 	<main role="main">
