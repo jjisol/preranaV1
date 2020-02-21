@@ -14,3 +14,9 @@ def HomePageView(request):
 
 def introduction(request):
     return render(request, 'introduction.html', {})
+
+def yoga_detail(request):
+    return render(request, 'yoga_detail.html', {})
+
+def pilates_detail(request):
+    return render(request, 'pilates_detail.html', {})

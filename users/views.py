@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm, DeleteAccountForm, CustomUserChangeForm
 from .forms import LoginForm, FindUsernameForm, FindPasswordForm
 from django.contrib.auth import login, authenticate
-from .models import CustomUser
+from .models import CustomUser, Cart
 from django.contrib import auth
 from django.contrib.auth import logout
 from django.contrib import messages

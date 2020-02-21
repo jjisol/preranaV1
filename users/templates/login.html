@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom fonts for this template -->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -24,18 +24,16 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Nanum+Myeongjo|Noto+Serif+KR&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Nanum+Myeongjo|Noto+Serif+KR&display=swap" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-	<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-	<link rel="stylesheet" href="{% static 'css/floating-labels.css' %}">
+	  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+	  <link rel="stylesheet" href="{% static 'css/floating-labels.css' %}">
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-
-
   </head>
 
   <body id="page-top">
@@ -51,7 +49,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="instructor_detail.html">프리라나 </a>
+              <a class="nav-link" href="{% url 'introduction' %}">프리라나 </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">요가 </a>
@@ -63,10 +61,10 @@
               <a class="nav-link" href="{% url 'center_intro' %}">센터소개 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="onedayclass_filter.html">원데이클래스 </a>
+              <a class="nav-link" href="{% url 'onedayclass_filter' %}">원데이클래스 </a>
             </li>
 			      <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">공지사항 </a>
+              <a class="nav-link" href="{% url 'notice_list' %}">공지사항 </a>
             </li>
 		        {% if user.is_authenticated %}
             <li class="nav-item">
@@ -75,17 +73,14 @@
 			      {% endif %}
           </ul>
           <form class="form-inline justify-content-end">
-			{% if user.is_authenticated %}
-			<a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'logout' %}">로그아웃</a>&nbsp
-			{% else %}
+			    {% if user.is_authenticated %}
+			       <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'logout' %}">로그아웃</a>&nbsp
+			    {% else %}
             <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signin' %}">로그인</a>&nbsp
             <a id="navbtn1" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signup' %}">회원가입</a>
-			{% endif %}
-
+			    {% endif %}
           </form>
         </div>
-
-
     </nav>
 
 	<header class="py-4 mb-5">
@@ -153,7 +148,7 @@
 	</article>
 
 
-  	  <footer class="footer" >
+  <footer class="footer" >
 		<div class="container" style="margin-top:6em;">
 		  <div class="row align-items-center">
 			<div class="col-md-4">
