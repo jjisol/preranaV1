@@ -13,17 +13,20 @@
       <div class="card-body">
           <h3 class="card-title">{{ notice.title }}</h3>
           {% if notice.published_date %}
-              <div class="card-subtitle mb-2 text-muted">
-                  {{ notice.published_date }}
-              </div>
+                <div class="card-subtitle text-muted">
+					작성자: {{ notice.author }}
+					날짜: {{ notice.published_date }}
+				</div>
           {% endif %}
+		  <hr class="mb-5">
           <p>{{ notice.text|linebreaksbr }}</p>
       </div>
-      <div class="card-footer text-right">
+      <div class="card-footer text-right mt-3">
         {% if request.user.is_staff %}
         <a class="btn btn-sm btn-outline-secondary" href="{% url 'notice_edit' id=notice.id %}">수정</a>
         <a class="btn btn-sm btn-outline-secondary" href="{% url 'notice_remove' id=notice.id %}">삭제</a>
         {% endif %}
+		<a class="btn btn-success" href="{% url 'notice_list'%}">목록으로 가기</a>
       </div>
     </div>
   </div>

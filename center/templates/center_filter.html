@@ -66,71 +66,33 @@
 		<p>검색 결과</p>
 	</div><br>
 	<div class="container">
-		<div class="card-deck">
+		<div class="row">
 			{% for center in filter.qs %}
-		  <div class="card">
-			{% for image in center.center_image.all %}
-			<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
-			{% endfor %}
-			<div class="like-position">
-				{% if request.user.is_authenticated %}
-				<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
-					<i class="fa fa-heart"></i>
-				</button></a>
-				{% else %}
-				<button class="button button-like">
-					<i class="fa fa-heart"></i>
-				</button>
-				{% endif %}
-			</div>
-			<div class="card-body">
-				<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}" class="text-dark">{{ center.name }}</a></h5><br>
-				<ul style="list-style:none; padding:0;">
-				  <li>{{ center.address }}</li>
-				  <li>{{ center.phone }}</li>
-				</ul>
-			</div>
-			<div class="card-footer">
-			  <small class="text-muted">#필라테스</small>
-			</div>
+		  <div class="col-md-4">
+			  <div class="card mb-4 box-shadow" style="height:600px;" >
+				{% for image in center.center_image.all %}
+				<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
+				{% endfor %}
+				<div class="like-position">
+					<button class="button button-like">
+					  <i class="fa fa-heart"></i>
+					</button>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}" class="text-dark">{{ center.name }}</a></h5><br>
+					<ul style="list-style:none; padding:0;">
+					  <li>{{ center.address }}</li>
+					  <li>{{ center.phone }}</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+				  <small class="text-muted">#{{ center.type }}</small>
+				</div>
+			  </div>
+
 		  </div>
 			{% endfor %}
-		  <div class="card">
-			<img class="card-img-top" src="{% static 'img/about/2.jpg' %}" alt="Card image cap">
-			<div class="like-position">
-				<button class="button button-like">
-				  <i class="fa fa-heart"></i>
-				</button>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title"><a href="#" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
-				<ul style="list-style:none; padding:0;">
-				  <li>서울시 평화구 필테동 멍멍</li>
-				  <li>02-123-2344</li>
-				</ul>
-			</div>
-			<div class="card-footer">
-			  <small class="text-muted">#필라테스</small>
-			</div>
-		  </div>
-		  <div class="card">
-			<img class="card-img-top" src="{% static 'img/about/3.jpg' %}" alt="Card image cap">
-			<div class="like-position">
-				<button class="button button-like">
-				  <i class="fa fa-heart"></i>
-				</button>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title"><a href="#" class="text-dark">마음의 평화가 오는 필라테스</a></h5><br>
-				<ul style="list-style:none; padding:0;">
-				  <li>서울시 평화구 필테동 멍멍</li>
-				  <li>02-123-2344</li>
-				</ul>
-			</div>
-			<div class="card-footer">
-			  <small class="text-muted">#필라테스</small>
-			</div>
-		  </div>
+		</div>
 	</div>
 	{% if messages %}
 		{% for message in messages %}

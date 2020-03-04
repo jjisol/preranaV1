@@ -1,0 +1,89 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+	<!-- Header -->
+	<header class="py-5 mb-5">
+		<div class="container h-100">
+		  <div class="row h-100 align-items-center">
+			<div class="col-lg-12">
+			</div>
+		  </div>
+		</div>
+	</header>
+	
+	<article>
+		<div>
+			<img src="{% static 'img/yoga_main.jpg' %}"  class="img-fluid" >
+		</div>
+		<div class="container">
+			<div class="text-center">
+				<h2 class="my-5"><strong>건강에 요가가 필요한 이유</strong> <span style="color:#2f965d;">3가지</span></h2>
+				<h3><span style="color:#2f965d;">1.</span></h3>
+				<h5><strong>심신을 안정시키고 스트레스를 완화 시킵니다.</strong></h5>
+				<p>요가만의 호흡법과 명상이 동반되어 마음을 몸과 마음을 조화롭게 만들어 줍니다.</p>
+				<h3><span style="color:#2f965d;">2.</span></h3>
+				<h5><strong>불균형한 자세 교정을 도와줍니다.</strong></h5>
+				<p>요가의 목적은 자세의 불균형과 그것의 원인인 생활습관을 올바르게 할 수 있도록 만드는 것 입니다.</p>
+				<h3><span style="color:#2f965d;">3.</span></h3>
+				<h5><strong>코어 근력 향상에 탁월합니다.</strong></h5>
+				<p>운동 효과가 증가하고 부상 예방을 막아주며 기초체력의 증가로 일상의 피로를 덜어줍니다.</p>
+				<a class="btn btn-success btn-lg my-5" href="{% url 'center_intro' %}">맞춤 요가 센터 찾아보기 &raquo;</a>
+				<hr class="my-5">
+				<h2 class="mb-5"><strong>요가도 종류가 있다?</strong></h2>
+				<h5><strong>"결국 모든 요가의 종류는 종합적으로 정리되어 배우는 사람이</strong></h5>
+				<h5 class="mt-3"><strong>보다 완벽하게 깨달음을 성취하는 길로 나아가도록 노력해야 한다."</strong></h5>
+				<h5 class="my-5"><strong>-출처: 한국요가협회-</strong></h5>
+			</div>
+			<br><br>
+			<div class="row justify-content-center">
+			<div class="col-sm-7">
+				<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+				  <li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#laza" role="tab" aria-controls="home" aria-selected="true">라자요가</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#gana" role="tab" aria-controls="profile" aria-selected="false">가나요가</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#carma" role="tab" aria-controls="contact" aria-selected="false">카르마요가</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#bacti" role="tab" aria-controls="contact" aria-selected="false">박티요가</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#hata" role="tab" aria-controls="contact" aria-selected="false">하타요가</a>
+				  </li>
+				</ul>
+				<div class="tab-content " id="myTabContent">
+				  <div class="tab-pane fade show active" id="laza" role="tabpanel" aria-labelledby="home-tab">
+					<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 라자요가: 심리적, 명상 &#10078;</strong></h5>
+					<p>바른 앎의 지혜를 일으킬 수 있는 여러 단계의 요가와 여러 종류의 요가를 모두 명상요가 (Raja Yoga)라 할 수 있다. 요가수행의 8가지 방법을 제시한 8단계요가(Ashtanga Yoga), 우주의식 (초월의식)과 참 자아는 둘이 아니고 하나라는 기조위에서 신인합일(神人合一)을 추구하는 지혜요가(Jnana Yoga)와 이성요가(Bhudhi Yoga)도 모두 넓은 뜻의 심리적 명상요가에 속한다고 할 수 있다. 결국 “라자”라는 말은 왕을 뜻하므로 모든 요가의 궁극적인 종점은 라자요가로 귀결된다.</p>
+				  </div>
+				  <div class="tab-pane fade" id="gana" role="tabpanel" aria-labelledby="profile-tab">
+					<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 가나요가 Jnana-Yoga : 지식, 지혜 &#10078;</strong></h5>
+					<p>인간의 고통은 무지와 무명으로부터 생겨나는 것이기 때문에 바른 앎(바른 지혜)를 통해 괴로움에 서 벗어나서 깨달음에 도달하는 요가이며 사상적, 철학적 요가이다. 상캬철학을 배경으로 한 이론적 사색의 지식명상, 출가수행, 인중유과론, 전변론, 식별지, 고행 등이 중시 되었다. 따라서 세속적인 의미의 학문적이고 개념적인 지식과 더 높고 직관적인 통찰력과 신의 지혜 모두를 말한다.</p>
+				  </div>
+				  <div class="tab-pane fade" id="carma" role="tabpanel" aria-labelledby="contact-tab">
+					<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 카르마요가 Karma-Yoga : 행동 &#10078;</strong></h5>
+					<p>카르마라는 말은 일반적으로 행동을 뜻하며, 한 사람의 의도, 생각, 행위의 도덕적 힘을 지칭하기도 한다. 스스로의 행동이 소중하게 취급되지 못한 출가 수행적 사색명상의 지식요가, 심리접근에 의한 지혜내기의 심리요가에 대한 보완책으로 바른 앎보다는 바른 행(이기적이 아닌 이타적 행동)을 강 조한 요가이다. 현상적인 삶의 행동으로부터 철수하여 명상을 함으로써 참 자아를 깨우칠 수도 있겠지만, 더욱 우수 한 것은 삶의 현장에 직접 참여하여 행동함으로써 참 자아를 실현 시킬 수 있다. 참 자아의 본성적인 힘을 발휘하는 행동이 명상보다 위대한 자기실현이라고 "바가바드기타"경전은 주장하고 있다. 주변의 상황에 대하여 자기가 행동으로 참여하지 않는 것만으로는 그 상황으로부터 자유로워 질수 없고, 모든 것을 포기하고 마음을 비우는 것만으로는 더 큰 성취를 할 수 있는 것이 아니라는 것이다 . 어떤 상황에서 자신에게 주어진 행동은 자신의 우주적 의무이므로 행동을 해야 하며, 단지 이기적이 아닌 절대적 가치에 자신을 통합시켜서 행동해야 한다는 것이다.</p>
+				  </div>
+				  <div class="tab-pane fade" id="bacti" role="tabpanel" aria-labelledby="contact-tab">
+					<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 박티요가 Bhakti-Yoga : 헌신 &#10078;</strong></h5>
+					<p>박티"라는 말은 "참여한다, 함께한다"을 뜻한다. 신성과 함께함을 뜻하고 신성과 스승에 대한 헌신 과 봉사와 사랑을 의미한다. AD9세기 이후부터 AD18세기까지 종교운동으로 발전하면서 종교의 배타성을 신에 대한 절대적 사랑과 명상으로 승화시켰다. 사랑과 헌신은 자신과 주변을 변화시키는 에너지이다.
+첫째는 자신을 사랑하고 둘째는 이웃을 사랑하고 셋째는 자연을 사랑하고 넷째는 신을 사랑하라는 것이다. 스승의 본질도 사랑이고 제자의 본질도 사랑이다. 스승은 제자를 사랑하고 제자는 스승을 존경해야 한다. 자신과 모든 것에 대한 신뢰심을 기르고 이기적 자기를 확장하여 타를 위해 희생하 는 기쁨을 즐기며 용서하고 만족하며 참회하여 보다 높은 곳으로 나아가야 한다. 보다 큰 가치의 실 현에 정진하는 것이 신성과 합일하는 길이다.</p>
+				  </div>
+				  <div class="tab-pane fade" id="hata" role="tabpanel" aria-labelledby="contact-tab">
+					<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 하타요가 Hatha-Yoga : 생리 &#10078;</strong></h5>
+					<p>음(Tha:月)과 양(Ha:日)의 요가이다.
+AD4세기부터 AD10세기 사이에 인도사회를 선풍적으로 압도했던 탄트라요가의 발전은 육체를 통해서 신성을 실현하려는 노력이 하타요가의 체계적 완성으로 발전하였다. "하타요가 프라디피카(Hatha- Yoga-Praelipika:하타요가의 원리)"가 AD15경에 저술되어 현존한 것으로는 가장 오래된 하타요가 경전 이다. 그 후 AD15세기 이후에 나온 "게란다상히타(Geranda-Samhita)"와 "시바상히타(Siva-Samhita)" 라는 하타요가 경전들이 오늘날 전해지고 있다. 하타요가는 인간의 신체를 신성으로 승화시켜 음양의 균형적 화합을 실현하며 쿤달리니를 각성시켜서 참된 자아를 실현하고자 하는 육체요가이다.
+다시 말하자면 몸가짐을 다스리고 숨쉬기를 훈련하며 식이법과 정화법으로 인간의 본성적 생명력을 회복하려는 요가이다. 고전 요가가 깨달음을 향한 요가였다면 중세요가는 카르마가 남지 않는 바른 선행 의 요가였고, 그 바른 앎과 바른 선행을 하기 위한 자기 자신의 존재에 대한 생명의 본성회복을 위해 근대에 와서 하타요가가 발전 하였다. 하타요가는 라자요가를 위한 필수적인 요가이며 현대에 와서는 건강법으로 활용되면서 세계 여러 나라 가 대체의학의 범주에서 중요시 하고 있다.</p>
+				  </div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</article>
+	  
+	  
+{% endblock %}

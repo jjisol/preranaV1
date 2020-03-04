@@ -15,7 +15,7 @@ p {
 }
 
 a {
-  color: #fed136;
+  color: #2f965d;
 }
 
 a:hover {
@@ -23,7 +23,7 @@ a:hover {
 }
 
 .text-primary {
-  color: #fed136 !important;
+  color: #2f965d !important;
 }
 
 h1,
@@ -83,12 +83,12 @@ h6 {
 }
 
 ::-moz-selection {
-  background: #fed136;
+  background: #2f965d;
   text-shadow: none;
 }
 
 ::selection {
-  background: #fed136;
+  background: #2f965d;
   text-shadow: none;
 }
 
@@ -115,9 +115,9 @@ img::-moz-selection {
 }
 
 .btn-primary {
-  background-color: #fed136;
+  background-color: #2f965d;
 
-  border-color: #fed136;
+  border-color: #2f965d;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
@@ -479,7 +479,7 @@ header.masthead .intro-text .intro-heading {
   color: white;
   border: 7px solid #e9ecef;
   border-radius: 100%;
-  background-color: #fed136;
+  background-color: #2f965d;
 }
 
 .timeline > li .timeline-image h4 {
@@ -650,7 +650,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-  border-color: #fed136;
+  border-color: #2f965d;
   box-shadow: none;
 }
 
@@ -716,5 +716,5 @@ ul.social-buttons li a {
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-  background-color: #fed136;
+  background-color: #2f965d;
 }

@@ -1,0 +1,95 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+	<!-- Header -->
+	<header class="py-5 mb-5">
+		<div class="container h-100">
+		  <div class="row h-100 align-items-center">
+			<div class="col-lg-12">
+			</div>
+		  </div>
+		</div>
+	</header>
+	
+	<article>
+		<div>
+			<img src="{% static 'img/pilates_main.jpg' %}"  class="img-fluid" >
+		</div>
+		<div class="container">
+			<div class="text-center">
+				<h2 class="my-5"><strong>필라테스의 유래를 아시나요?</strong></h2>
+				<h4 class="mb-5"><strong>필라테스</strong>는 근육 강화를 목표로 <strong><em>조셉 필라테스</em></strong> 에 의해 시작 되었습니다.</h4>
+				<p>세계대전 당시, 수용소에서 지내던 조셉은 매트운동을 기초로 수감자들과 독감을 이겨냅니다.</p>
+				<p>이 후 전쟁으로 부상 입은 사람들의 재활 치료를 맡게 되면서 제한된 공간을 효율적으로 사용할 방법을 고민합니다.</p>
+				<p>그 결과물이 침대 매트리스를 이용한 운동법이었고 침대 끝에 스프링을 매달아 현재 기구 필라테스의 시초가 됩니다.</p>
+				<a class="btn btn-success btn-lg my-5" href="{% url 'center_intro' %}">맞춤 필라테스 센터 찾아보기 &raquo;</a>
+				<hr class="my-5">
+				<h2 class="my-5"><strong>필라테스의 효과</strong> <span style="color:#2f965d;">3가지</span></h2>
+				<h3><span style="color:#2f965d;">1.</span></h3>
+				<h5><strong>신체 전체의 균형을 유지 시킵니다.</strong></h5>
+				<p>필라테스는 코어 근육을 위주로 단련시키기 때문에 자세 교정에 도움이 되며 전신 근육의 균형과 혈액순환의 향상을 가져옵니다.</p>
+				<h3><span style="color:#2f965d;">2.</span></h3>
+				<h5><strong>심리적으로 안정되도록 합니다.</strong></h5>
+				<p>필라테스의 호흡법은 스트레스를 줄여주고 집중력을 높여주며 부정적 생각을 없애는데 도움이 됩니다.</p>
+				<h3><span style="color:#2f965d;">3.</span></h3>
+				<h5><strong>재활치료가 가능합니다.</strong></h5>
+				<p>필라테스가 처음 만들어진 목적이 재활인 만큼 거북목, 허리디스크, 척추 측만증, 관절염 등에 효과적입니다.</p>
+				<a class="btn btn-success btn-lg my-5" href="{% url 'center_intro' %}">맞춤 필라테스 센터 찾아보기 &raquo;</a>
+				<hr class="my-5">
+				<h2 class="mb-5"><strong>필라테스에서 사용되는 기구들</strong></h2>
+				<h5 class="my-5"><strong>-출처: 범세계적 필라테스 공인 협회-</strong></h5>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-sm-7">
+					<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+					  <li class="nav-item">
+						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#reformer" role="tab" aria-controls="home" aria-selected="true">리포머</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#cadillac" role="tab" aria-controls="profile" aria-selected="false">캐딜락</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" id="contact-tab" data-toggle="tab" href="#chair" role="tab" aria-controls="contact" aria-selected="false">체어</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" id="contact-tab" data-toggle="tab" href="#roller" role="tab" aria-controls="contact" aria-selected="false">폼롤러</a>
+					  </li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+					  <div class="tab-pane fade show active" id="reformer" role="tabpanel" aria-labelledby="home-tab">
+						<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 리포머 (Reformer) &#10078;</strong></h5>
+						<p>필라테스 창시자 죠셉 필라테스가 만든 운동기구이다. 캐리라는 지지대가 레일위에서 움직이게 되어 있다. 수련자는 이 위에 눕거나, 앉거나, 업드리는등이 다양한 자세를 취하고, 지지대에 연결된 스프링을 밀고 당기는 동작을 통해, 신체의 전 부위를 단련한다. 리포머을 비롯해, 필라테스의 기구들은 스프링을 적극적으로 이용한다. 스프링은 수련자에게 다양한 운동강도를 제공하고, 운동의 범위를 확장시켜준다. 또한 스프링의 흔들림을 제어하는 능력을 발달시키고, 이것을 통해 신체의 불균형이 심화된 사람들에게. 신체의 근육을 바르게 사용하는 법을 가르쳐준다.
+
+기존의 웨이트트레이닝식의 운동기구가. 보통 한가지운동만 할 수 있다면, 리포머는 죠셉필라테스가 만들어내고.필라테스메소드연맹이 정립한 수십가지의 동작을 기본으로, 백여동작의 다양한 운동을 할 수 있다. 운동의 강도는 스프링자체의 강도와 스프링의 개수와 스프링과 수련자의 거리. 수련자의 자세로 결정되며, 재활에서 일반인의 건강. 운동선수의 운동능력향상에 이르기까지 다양한 운동을 할 수 있는 멀티복합운동기구이다.
+
+리포머운동의 특징은 실제 인간이 해부학적으로 행하는 운동을 기본으로 전개된다. 인간은 살아오면서, 잘못된 운동습관과 생활습관으로, 자신의 근육및 관절을 불량하게 사용하여, 신체가 왜곡되고, 불균형을 스스로 만들게 된다. 예를 들면,발목을 정확히 발목의 무게중심을 중심으로 굴곡하고 신전하지 않는 동작을 반복하게 되면, 발목은 안쪽과 바깥쪽의 근육의 불균형을 일으키고, 잦은 발목부상, 발과 다리의 부정렬을 일으킨다. 이때 리포머의 풋바[발을 없애는 바]에 발을 바르게 정렬하여, 발목을 바르게 굴신하는 동작을 통해, 다시 발목의 올바른 사용법을 배우게 하는 것이다.</p>
+					  </div>
+					  <div class="tab-pane fade" id="cadillac" role="tabpanel" aria-labelledby="contact-tab">
+						<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 캐딜락 (Cadillac) &#10078;</strong></h5>
+						<p>이것은 조셉 필라테스에 의해 영국의 포로병원에서 누워만 있어야하는 환자들의 근력 및 유연성, 재활운동을 위해 처음에 고안했다가, 그후 점점 개량을 하게 되었다. 초기에는 침대 스프링을 사용하였고, 철제침대에 봉을 세워, 거기에 다양한 스프링을 부착하여, 다양한 운동을 할 수 있게 고안한 기구이다.
+
+트라피즈테이블은 운동기능이 떨어진 사람에게, 스프링과 다양한 지지대[푸시스로우바. 롤다운 바등]를 통해,필요로 하는 해부학적운동을 정확히 수행할 수 있도록 도와준다. 재활이 필요한 사람들은. 대부분 특정부위의 기능이 떨어지는데, 평상의 운동을 시키면, 기능이 떨어진 부위를 운동하는 것이 아니라. 다른 부위가 운동되는 보상작용이 일어난다. 트라피즈는 이것을 방지해준다. 인간이 행할 수 있는 대부분의 해부학적 운동을 모두 이위에서 행할 수 있다</p>
+					  </div>
+					  <div class="tab-pane fade" id="chair" role="tabpanel" aria-labelledby="contact-tab">
+						<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 체어 (chair) &#10078;</strong></h5>
+						<p>주로 Wunda Chair or Stability Chair로 알려진 Pilates chair는 다양한 기능을 가진 기구입니다. 의자라고 표현하기에는 기능이 너무 다양합니다. 앉는 기능을 하는 것이 아니라, 운동을 하는 동안 앉아서 발로 스텝이나 페달을 밀거나 때로는 바닥에 눕고 때로는 바로서서 때로는 무릎을 구부리고 다리를 앞으로 빼서 자세를 취한 후 동작을 만들어 낼 수 있습니다. 팔굽혀 펴기 같은 자세도 할 수 있다. 75가지 이상의 운동을 할 수 있도록 만들어졌습니다. 조절할 수 있는 스프링 저항은 이 기구의 핵심적인 장치입니다. 대개의 모델에서 4개의 스프링이 다양한 레벨의 저항을 일으킵니다. 발이나 손으로 스텝을 밀어 내리는 동안 체간에는 상당히 안정된 상태가 필요합니다. 생각보다 힘들 것이다. 꾸준한 연습이 필요할 것입니다.
+
+Chair는 근육을 균형 있게 만드는데 도움이 되고 몸 전체를 사용하여 운동이 이루어져야 합니다. 또한 스포츠인의 좀 더 높은 수준의 운동을 도와줍니다. 상,하체의 근육을 강하게 만들어주고, 균형을 잡아주며, 몸의 안정성을 높여줘서 몸을 조절하는 능력을 키워줍니다. Chair의 페달은 분리가 되어 양쪽을 동시에 하거나 한쪽씩 하거나 양쪽을 번갈아 가면서 운동할 수 있기 때문에 뭄 전체의 균형과 근력을 증가시킬 수 있습니다.
+
+이 기구 운동으로 허리근육이나 엉덩이, 어깨, 복횡근 등의 근육의 발란스가 맞춰질 것입니다. 또한 근육이나 인대가 삐거나 늘어난 상태를 재활목적의 동작의 훈련으로 재조정할 수 있을 것입니다. 조셉 필라테스의 오리지날 체어는 처음에 하나의 스프링 페달이었지만 여러 차례 실력 있는 필라테스 기구 제작자들에 의해 변형되고 개발되어 점차 운동을 하기에 적합한 기구로 발전하게 되었습니다. 변형과 수정은 급속도로 진행되고 스텝이나 페달은 발이나 다리의 회전운동이나 상호 역학적인 관계를 연구해 가장 큰 효과를 낼 수 있도록 진화되었습니다. 핸들이나 의자 지지대 회전디스크나 그 밖에 악세사리 들이 추가적으로 변형 개발되어 추가되었으며, 어떤 체어들은 높이가 다양하게 제작되었습니다. 하지만 기본적인 구조나 원리는 그대로 유지되었습니다.</p>
+					  </div>
+					  <div class="tab-pane fade" id="roller" role="tabpanel" aria-labelledby="profile-tab">
+						<h5 class="mt-5 mb-3 text-center"><strong>&#10077; 폼롤러 (Foam Roller) &#10078;</strong></h5>
+						<p>폼롤러는 중량이 가볍고 충격흡수력이 좋은 고급스펀지 재질로 만들어진 긴 원형막대기 모양의 소도구입니다. 폼롤러는 구르는 성질을 이용하여 신체의 ROM증진(Range of motion) 및 각 부위의 스트레칭에 유용하게 활용하실 수 있습니다. 또한, 신체의 2~3 군데의 복합적인 스트레칭이 가능하며, 발란스 능력향상, 근력강화 운동프로그램과 함께 다양한 방법으로 사용하실 수 있습니다. 전신을 스트레칭 및 손에 닿지 않는 부위의 긴장된 근육을 쉽게 이완시켜 주고, 신체 각 관절의 가동범위를 증가시키는데 탁월한 효과를 가지고 있습니다.폼롤러는 지면에 신체의 지지면을 낮추어 발란스 향상 트레이닝시 유용하게 활용하실 수 있으며, 운동선수의 경기력향상에 도움을 줍니다.
+
+밸런스 능력향상 및 근력강화 운동 프로그램에 활용하며, 임상적 활용으로 근경화(Muscle Tightness), 근(근막)증후군(Myofacial Pain Syndrome), 근유착(Muscle Adhesion), 오십견(Frozen Shoulder) 등의 개선, 회복, 예방에 도움을 줍니다. 뇌졸중, 소아마비등의 환자에게 치료적 운동요법을 적용하여 신체의 기능적인 움직임 개선에 도움을 줍니다. SMRT(Self Myofacial Release Technique, 자가근막이완기법)으로 일반인 및 운동선수들이 긴장된 근육을 쉽게 이완시킬 수 있고 목적에 따라 재활치료, 자세교정 등의 용도로 활용 가능합니다. 추가적인 임상적 활용으로 오십견, 근(근막)협착증, 근경화(Muscle Tightness)의 개선에 도움을 주며 근육피로 회복과 상해 예방에 도움을 줍니다. 등 상부 근육 마사지, 중추 유연성 향상, 둔부, 슬건, 복구 강화, 신체 균형 감각 향상을 위해 사용할 수 있으며, 척추 굴곡, 팔 굴곡, 무릎 신전이 가능합니다.</p>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	  
+	  
+{% endblock %}
