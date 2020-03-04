@@ -1,5 +1,5 @@
 # users/views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CustomUserCreationForm, DeleteAccountForm, CustomUserChangeForm
 from .forms import LoginForm, FindUsernameForm, FindPasswordForm
 from django.contrib.auth import login, authenticate
@@ -20,6 +20,9 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import Group
+from center.models import Center
+from onedayclass.models import OnedayClass
+from django.http import HttpResponseRedirect
 
 @csrf_exempt
 def signup(request):
@@ -182,7 +185,8 @@ def update(request):
             return redirect('mypage')
         else:
             user_change_form = CustomUserChangeForm(instance = request.user)
-            return render(request, 'editAccount.html', {'user_change_form':user_change_form})
+            return render(request, 'editAccount.html',
+                {'user_change_form':user_change_form, 'message':'유효하지 않은 형식입니다. 다시 입력해주세요.'})
     else:
 	    user_change_form = CustomUserChangeForm(instance = request.user)
 	    return render(request, 'editAccount.html', {'user_change_form':user_change_form})
@@ -203,3 +207,54 @@ def password(request):
     else:
         password_change_form = PasswordChangeForm(request.user)
         return render(request, 'password.html', {'password_change_form':password_change_form})
+
+@login_required
+def cart_list(request):
+    cart = Cart.objects.get(user=request.user)
+    centers = cart.centers.all()
+    events = cart.events.all()
+    onedayclasses = cart.onedayclasses.all()
+    return render(request, 'cart_list.html',
+        {'centers':centers, 'events':events, 'onedayclasses':onedayclasses})
+
+@login_required
+def add_to_cart_center(request, id):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart.centers.add(id)
+    messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def add_to_cart_event(request, id):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart.events.add(id)
+    messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def add_to_cart_onedayclass(request, id):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart.onedayclasses.add(id)
+    messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def del_from_cart_center(request, id):
+    cart = Cart.objects.get(user=request.user)
+    cart.centers.remove(id)
+    messages.success(request, "찜목록에서 삭제되었습니다.")
+    return redirect('cart_list')
+
+@login_required
+def del_from_cart_event(request, id):
+    cart = Cart.objects.get(user=request.user)
+    cart.events.remove(id)
+    messages.success(request, "찜목록에서 삭제되었습니다.")
+    return redirect('cart_list')
+
+@login_required
+def del_from_cart_onedayclass(request, id):
+    cart = Cart.objects.get(user=request.user)
+    cart.onedayclasses.remove(id)
+    messages.success(request, "찜목록에서 삭제되었습니다.")
+    return redirect('cart_list')
