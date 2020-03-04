@@ -221,6 +221,7 @@ def cart_list(request):
 def add_to_cart_center(request, id):
     cart, created = Cart.objects.get_or_create(user=request.user)
     cart.centers.add(id)
+    cart.save()
     messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -228,6 +229,7 @@ def add_to_cart_center(request, id):
 def add_to_cart_event(request, id):
     cart, created = Cart.objects.get_or_create(user=request.user)
     cart.events.add(id)
+    cart.save()
     messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -235,6 +237,7 @@ def add_to_cart_event(request, id):
 def add_to_cart_onedayclass(request, id):
     cart, created = Cart.objects.get_or_create(user=request.user)
     cart.onedayclasses.add(id)
+    cart.save()
     messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -242,6 +245,7 @@ def add_to_cart_onedayclass(request, id):
 def del_from_cart_center(request, id):
     cart = Cart.objects.get(user=request.user)
     cart.centers.remove(id)
+    cart.save()
     messages.success(request, "찜목록에서 삭제되었습니다.")
     return redirect('cart_list')
 
@@ -249,6 +253,7 @@ def del_from_cart_center(request, id):
 def del_from_cart_event(request, id):
     cart = Cart.objects.get(user=request.user)
     cart.events.remove(id)
+    cart.save()
     messages.success(request, "찜목록에서 삭제되었습니다.")
     return redirect('cart_list')
 
@@ -256,5 +261,6 @@ def del_from_cart_event(request, id):
 def del_from_cart_onedayclass(request, id):
     cart = Cart.objects.get(user=request.user)
     cart.onedayclasses.remove(id)
+    cart.save()
     messages.success(request, "찜목록에서 삭제되었습니다.")
     return redirect('cart_list')
