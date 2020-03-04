@@ -127,9 +127,15 @@
 			  <div class="card">
 				<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 				<div class="like-position">
+					{% if request.user.is_authenticated %}
+					<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
+						<i class="fa fa-heart"></i>
+					</button></a>
+					{% else %}
 					<button class="button button-like">
-					  <i class="fa fa-heart"></i>
+						<i class="fa fa-heart"></i>
 					</button>
+					{% endif %}
 				</div>
 				<div class="card-body">
 					<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
@@ -184,6 +190,13 @@
 				</div>
 			  </div>
 		</div>
+		{% if messages %}
+		  {% for message in messages %}
+		  <script>
+		    alert('{{ message }}');
+		  </script>
+		{% endfor %}
+		{% endif %}
 	</article>
 
 
