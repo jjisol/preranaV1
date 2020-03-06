@@ -1,8 +1,8 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load tags %}
 {% load widget_tweaks %}
 {% block content %}
-
 	 <!-- Header -->
 	<header class="py-5 mb-5">
 		<div class="container h-100">
@@ -85,10 +85,12 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label"><strong>정렬</strong></label>
 					{% for choice in filter.form.o %}
+						{% if forloop.counter > 1 %}
 						<div class="form-check form-check-inline">
 							{{ choice.tag }} &nbsp
 							<label class="form-check-label" >{{ choice.choice_label }}</label>
 						</div>
+						{% endif %}
 					{% endfor %}
 				</div>
 			  </li>
@@ -110,21 +112,33 @@
 		<br><br><br>
 		<div class="container">
 			<div class="row">
-					{% for onedayclass in filter.qs %}
+				{% for onedayclass in filter.qs %}
 				<div class="col-md-4">
 				  <div class="card mb-4 box-shadow" style="height:600px;">
 					<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 					<div class="like-position">
+						{% if request.user.is_authenticated %}
+							{% if cart|onedayclass_in_cart:onedayclass.id %}
+							<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like liked">
+								<i class="fa fa-heart"></i>
+							</button></a>
+							{% else %}
+							<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
+								<i class="fa fa-heart"></i>
+							</button></a>
+							{% endif %}
+						{% else %}
 						<button class="button button-like">
-						  <i class="fa fa-heart"></i>
+							<i class="fa fa-heart"></i>
 						</button>
+						{% endif %}
 					</div>
 					<div class="card-body">
 						<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
 							class="text-dark">{{ onedayclass.name }}</a></h5><br>
 						<ul style="list-style:none; padding:0;">
 						  <li>가격: {{ onedayclass.price }}</li>
-						  <li>일시: {{ onedayclass.date }}</li>
+						  <li>일시: {{ onedayclass.date|date:"Y년 m월 d일" }}</li>
 						  <li>장소: {{ onedayclass.place }}</li>
 						</ul>
 					</div>

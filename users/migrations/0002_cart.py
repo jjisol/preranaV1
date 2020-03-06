@@ -8,7 +8,8 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-       
+        #('center', '0006_auto_20200226_1600'),
+
         ('onedayclass', '0004_auto_20200226_1600'),
         ('users', '0001_initial'),
     ]

@@ -32,7 +32,7 @@
 						</address><br>
 						<address>
 						  <p title="price">가격: 인당 {{ onedayclass.price }}원</p>
-						  <p title="site">일정: {{ onedayclass.date }} </p>
+						  <p title="site">일정: {{ onedayclass.date|date:"Y년 m월 d일" }} </p>
 						  <p title="Phone">문의전화: {{ onedayclass.sns }}</p>
 						  <p title="location">장소:
 						  {{ onedayclass.place }}

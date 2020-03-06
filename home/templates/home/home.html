@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load tags %}
 {% block content %}
 	<header>
 	  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -46,35 +47,32 @@
 		<div class="jumbotron jumbotron-fluid bg-white container">
 			<div>
 				<h1 style="color:#2f956d">오늘의 이벤트</h1>
-				<p class="lead">센터에서 진행 중인 이벤트에 참여해보세요.</p>
-		    </div>
+			  <p class="lead">센터에서 진행 중인 이벤트에 참여해보세요.</p>
+		  </div>
 
-			<div class="swiper-container" style="height:570px;">
-				<div class="swiper-wrapper">
-						{% for center in centers %}
-						<div class="swiper-slide">
-							<div class="card box-shadow" style="height:560px;">
-								<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
-								<div class="like-position">
-									{% if request.user.is_authenticated %}
-									<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like">
+			<div class="swiper-container">
+    		<div class="swiper-wrapper">
+					{% for center in centers %}
+					<div class="swiper-slide">
+						<div class="card">
+							<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
+							<div class="like-position">
+								{% if request.user.is_authenticated %}
+									{% if cart|event_in_cart:center.id %}
+									<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like liked">
 										<i class="fa fa-heart"></i>
 									</button></a>
 									{% else %}
-									<button class="button button-like">
+									<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like">
 										<i class="fa fa-heart"></i>
-									</button>
+									</button></a>
 									{% endif %}
-								</div>
-								<div class="card-body">
-									<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}" class="text-dark">{{ center.name }}</a></h5><br>
-									<ul style="list-style:none; padding:0;">
-										<li>{{ center.address }}</li>
-										<li>{{ center.phone }}</li>
-									</ul>
-								</div>
-								<div class="card-footer">
-								<small class="text-muted">#{{ center.type }}</small>
+								{% else %}
+								<button class="button button-like">
+									<i class="fa fa-heart"></i>
+								</button>
+								{% endif %}
+
 							</div>
 							</div>
 						</div>
@@ -106,9 +104,15 @@
 						{% endfor %}
 						<div class="like-position">
 							{% if request.user.is_authenticated %}
-							<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button></a>
+								{% if cart|center_in_cart:center.id %}
+								<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like liked">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% else %}
+								<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% endif %}
 							{% else %}
 							<button class="button button-like">
 								<i class="fa fa-heart"></i>
@@ -154,9 +158,15 @@
 							<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 						<div class="like-position">
 							{% if request.user.is_authenticated %}
-							<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button></a>
+								{% if cart|onedayclass_in_cart:onedayclass.id %}
+								<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like liked">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% else %}
+								<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% endif %}
 							{% else %}
 							<button class="button button-like">
 								<i class="fa fa-heart"></i>
@@ -168,7 +178,7 @@
 								 class="text-dark">{{ onedayclass.name }}</a></h5><br>
 								<ul style="list-style:none; padding:0;">
 								<li>가격: {{ onedayclass.price }}</li>
-								<li>일시: {{ onedayclass.date }}</li>
+								<li>일시: {{ onedayclass.date|date:"Y년 m월 d일" }}</li>
 								<li>장소: {{ onedayclass.place }}</li>
 							</ul>
 						</div>

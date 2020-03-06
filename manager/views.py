@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 def notice_list(request):
-    notices = Notice.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    notices = Notice.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'notice_list.html', {'notices':notices})
 
 def notice_detail(request, id):

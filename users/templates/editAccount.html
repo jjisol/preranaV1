@@ -30,21 +30,21 @@
 	  </div>
 	</div>
 	<div class="form group row mb-3">
-	  <label for="{{form.password.id_for_label}}" class="col-sm-2 col-form-label">성</label>
+	  <label for="{{ user_change_form.password.id_for_label }}" class="col-sm-2 col-form-label">성</label>
 	  <div class="col-sm-4">
-		<input class="form-control" id="{{ form.password.id_for_label }}"
-		  name="{{ form.password.html_name }}" type="text" />
+		<input class="form-control" id="{{ user_change_form.password.id_for_label }}"
+		  name="{{ user_change_form.password.html_name }}" type="text" />
 	  </div>
-	  <label for="{{form.password.id_for_label}}" class="col-sm-2 col-form-label">이름</label>
+	  <label for="{{ user_change_form.password.id_for_label }}" class="col-sm-2 col-form-label">이름</label>
 	  <div class="col-sm-4">
-		<input class="form-control" id="{{ form.password.id_for_label }}"
-		  name="{{ form.password.html_name }}" type="text" />
+		<input class="form-control" id="{{ user_change_form.password.id_for_label }}"
+		  name="{{ user_change_form.password.html_name }}" type="text" />
 	  </div>
 	</div>
 	<br>
 	<div class="text-right mb-4">
 	  <button class="btn btn-success type="submit">수정하기</button>
 	</div>
-  </form>				
+  </form>
 </div>
 {% endblock %}
