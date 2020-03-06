@@ -264,3 +264,7 @@ def del_from_cart_onedayclass(request, id):
     cart.save()
     messages.success(request, "찜목록에서 삭제되었습니다.")
     return redirect('cart_list')
+	
+@login_required
+def service_center(request):
+    return render(request, 'service_center.html', {})

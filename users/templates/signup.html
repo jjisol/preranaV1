@@ -107,8 +107,8 @@
 				<form class="form-signin" method="post" enctype="multipart/form-data">
 				  {% csrf_token %}
 				  <div class="container marketing">
-				  이름 <input class="form-control" id="{{ form.username.id_for_label }}"
-					maxlength="15" name="{{ form.username.html_name }}" placeholder="name" type="text" />
+				  아이디 <input class="form-control" id="{{ form.username.id_for_label }}"
+					maxlength="15" name="{{ form.username.html_name }}" placeholder="id" type="text" />
 				  <br>
 				  이메일 <input class="form-control" id="{{ form.email.id_for_label }}"
 					maxlength="120" name="{{ form.email.html_name }}" placeholder="Email" type="text" />
