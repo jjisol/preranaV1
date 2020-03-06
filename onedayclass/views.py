@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import OnedayClass
 from .filters import OnedayClassFilter
 from .forms import OnedayClassFilterForm
+from users.models import Cart
 
 def detail(request, id):
     onedayclass = get_object_or_404(OnedayClass, id=id)
@@ -10,5 +11,8 @@ def detail(request, id):
 def filter(request):
     onedayclass_list = OnedayClass.objects.all()
     filter = OnedayClassFilter(request.GET, queryset=onedayclass_list)
-    
-    return render(request, 'onedayclass_filter.html', {'filter':filter})
+    if request.user.is_authenticated:
+        cart = Cart.objects.get(user=request.user)
+        return render(request, 'onedayclass_filter.html', {'filter':filter, 'cart':cart})
+    else:
+        return render(request, 'onedayclass_filter.html', {'filter':filter})

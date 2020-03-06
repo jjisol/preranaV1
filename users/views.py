@@ -220,25 +220,40 @@ def cart_list(request):
 @login_required
 def add_to_cart_center(request, id):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    cart.centers.add(id)
-    cart.save()
-    messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    try:
+        center = cart.centers.get(id=id)
+        if center is not None:
+            messages.warning(request, "이미 찜목록에 있는 센터입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
+    except Exception as e:
+        cart.centers.add(id)
+        cart.save()
+        messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required
 def add_to_cart_event(request, id):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    cart.events.add(id)
-    cart.save()
-    messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    try:
+        event = cart.events.get(id=id)
+        if event is not None:
+            messages.warning(request, "이미 찜목록에 있는 이벤트입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
+    except Exception as e:
+        cart.events.add(id)
+        cart.save()
+        messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required
 def add_to_cart_onedayclass(request, id):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    cart.onedayclasses.add(id)
-    cart.save()
-    messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    try:
+        onedayclass = cart.onedayclasses.get(id=id)
+        if onedayclass is not None:
+            messages.warning(request, "이미 찜목록에 있는 원데이클래스입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
+    except Exception as e:
+        cart.onedayclasses.add(id)
+        cart.save()
+        messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required

@@ -19,7 +19,7 @@ class OnedayClass(models.Model):
     name = models.CharField(max_length=20, verbose_name='클래스명')
     type = models.CharField(max_length=4,
         choices=TYPE_CHOICES,
-        default='Y',
+        default='요가',
         verbose_name='클래스 종류')
     theme = models.CharField(max_length=1,
         choices=THEME_CHOICES,

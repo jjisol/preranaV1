@@ -1,9 +1,8 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load tags %}
 {% load widget_tweaks %}
 {% block content %}
-
-
 <header class="py-5 mb-5">
 	<div class="container h-100">
 	  <div class="row h-100 align-items-center">
@@ -74,9 +73,21 @@
 				<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
 				{% endfor %}
 				<div class="like-position">
+					{% if request.user.is_authenticated %}
+						{% if cart|center_in_cart:center.id %}
+						<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like liked">
+							<i class="fa fa-heart"></i>
+						</button></a>
+						{% else %}
+						<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
+							<i class="fa fa-heart"></i>
+						</button></a>
+						{% endif %}
+					{% else %}
 					<button class="button button-like">
-					  <i class="fa fa-heart"></i>
+						<i class="fa fa-heart"></i>
 					</button>
+					{% endif %}
 				</div>
 				<div class="card-body">
 					<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}" class="text-dark">{{ center.name }}</a></h5><br>

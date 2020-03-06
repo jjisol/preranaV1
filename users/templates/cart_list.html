@@ -30,12 +30,18 @@
     </div>
     </div>
   </div>
+  {% empty %}
+  <h5>비어있습니다.</h5>
   {% endfor %}
   {% for event in events %}
   <h5>{{ event.name }}</h5>
+  {% empty %}
+  <h5>비어있습니다.</h5>
   {% endfor %}
   {% for onedayclass in onedayclasses %}
   <h5>{{ onedayclass.name }}</h5>
+  {% empty %}
+  <h5>비어있습니다.</h5>
   {% endfor %}
 </div>
 {% if messages %}

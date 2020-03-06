@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load tags %}
 {% block content %}
 	<header>
 	  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -57,9 +58,15 @@
 							<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
 							<div class="like-position">
 								{% if request.user.is_authenticated %}
-								<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like">
-									<i class="fa fa-heart"></i>
-								</button></a>
+									{% if cart|event_in_cart:center.id %}
+									<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like liked">
+										<i class="fa fa-heart"></i>
+									</button></a>
+									{% else %}
+									<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like">
+										<i class="fa fa-heart"></i>
+									</button></a>
+									{% endif %}
 								{% else %}
 								<button class="button button-like">
 									<i class="fa fa-heart"></i>
@@ -103,9 +110,15 @@
 						{% endfor %}
 						<div class="like-position">
 							{% if request.user.is_authenticated %}
-							<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button></a>
+								{% if cart|center_in_cart:center.id %}
+								<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like liked">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% else %}
+								<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% endif %}
 							{% else %}
 							<button class="button button-like">
 								<i class="fa fa-heart"></i>
@@ -148,9 +161,15 @@
 							<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 						<div class="like-position">
 							{% if request.user.is_authenticated %}
-							<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button></a>
+								{% if cart|onedayclass_in_cart:onedayclass.id %}
+								<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like liked">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% else %}
+								<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
+									<i class="fa fa-heart"></i>
+								</button></a>
+								{% endif %}
 							{% else %}
 							<button class="button button-like">
 								<i class="fa fa-heart"></i>
@@ -162,7 +181,7 @@
 								 class="text-dark">{{ onedayclass.name }}</a></h5><br>
 								<ul style="list-style:none; padding:0;">
 								<li>가격: {{ onedayclass.price }}</li>
-								<li>일시: {{ onedayclass.date }}</li>
+								<li>일시: {{ onedayclass.date|date:"Y년 m월 d일" }}</li>
 								<li>장소: {{ onedayclass.place }}</li>
 							</ul>
 						</div>
