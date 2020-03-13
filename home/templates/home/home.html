@@ -54,7 +54,7 @@
 						<div class="card box-shadow" style="height:560px;">
 							<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
 						<div class="like-position">
-								{% if cart|center_in_cart:center.id %}
+								{% if cart|event_in_cart:center.id %}
 								<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like liked">
 									<i class="fa fa-heart"></i>
 								</button></a>

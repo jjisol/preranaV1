@@ -45,9 +45,9 @@
 			max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
 			/* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
 		}
-		
+
 		.custom-dropbtn {
-     	  background-color: transparent; 
+     	  background-color: transparent;
 		  padding: 16px;
 		  font-size: 14px;
 		  border: 0;
@@ -58,7 +58,7 @@
 			border: none;
 			outline: 0;
 		}
-		
+
 		.custom-dropdown {
 		  position: relative;
 		  display: inline-block;
@@ -92,7 +92,7 @@
 		  color: #2f965d;
 		}
 
-		
+
     </style>
 
 
@@ -135,7 +135,7 @@
 				  <button id="navbtn" class="custom-dropbtn btn btn-sm btn-success my-2 my-sm-0">내 정보 관리</button>
 				  <div class="custom-dropdown-content">
 					<a href="{% url 'mypage' %}">마이페이지</a>
-					<a href="{% url 'cart_list' %}">센터 찜목록</a>
+					<a href="{% url 'cart_list' %}">찜목록</a>
 					<a href="{% url 'logout' %}">로그아웃</a>
 				  </div>
 				</div>
@@ -193,7 +193,7 @@
 	<!-- Bootstrap core JavaScript -->
 	  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 	  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-	  
+
 
 	  <!-- Plugin JavaScript -->
 	  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
@@ -217,18 +217,18 @@
 			Logo.src='{%static 'img/prerana_logo_noletter_white.png'%}';
 			Logo.style.width = '30px';
 			userID.style.color='white';
-			
+
 		  } else {
 			Logo.src='{%static 'img/prerana_logo_noletter.png'%}';
 			Logo.style.width = '50px';
 			userID.style.color='black';
-			
+
 		  }
 		}
 		function growShrink2() {
 		  var navbtn = document.getElementById("navbtn")
 		  var navbtn1 = document.getElementById("navbtn1")
-		  var navbtn2 = document.getElementById("navbtn2")		  
+		  var navbtn2 = document.getElementById("navbtn2")
 		  if (document.body.scrollTop > 100|| document.documentElement.scrollTop > 100) {
 			navbtn.className = 'btn btn-sm btn-outline-light my-2 my-sm-0';
 			navbtn2.className = 'btn btn-sm btn-outline-light my-2 my-sm-0';
@@ -236,7 +236,7 @@
 		  } else {
 			navbtn.className = 'btn btn-sm btn-success my-2 my-sm-0';
 			navbtn2.className = 'btn btn-sm btn-success my-2 my-sm-0';
-			navbtn1.className = 'btn btn-sm btn-success my-2 my-sm-0';			
+			navbtn1.className = 'btn btn-sm btn-success my-2 my-sm-0';
 		  }
 		}
 	  </script>
