@@ -28,7 +28,7 @@
     <!-- Custom styles for this template -->
 
 
-	  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <style>
@@ -45,6 +45,54 @@
 			max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
 			/* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
 		}
+		
+		.custom-dropbtn {
+     	  background-color: transparent; 
+		  padding: 16px;
+		  font-size: 14px;
+		  border: 0;
+		  cursor: pointer;
+		  color:black;
+		}
+		.custom-dropdown button:focus{
+			border: none;
+			outline: 0;
+		}
+		
+		.custom-dropdown {
+		  position: relative;
+		  display: inline-block;
+		}
+
+		.custom-dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: rgba( 255, 255, 255, 1 );
+		  min-width: 160px;
+		  border-radius:5px;
+		  z-index: 1;
+		}
+
+		.custom-dropdown-content a {
+		  color: black;
+		  font-size: 14px;
+		  padding: 8px 12px;
+		  text-decoration: none;
+		  display: block;
+		}
+
+		.custom-dropdown-content a:hover {color: #2f965d;}
+
+		.custom-dropdown:hover .custom-dropdown-content {
+		  display: block;
+		}
+
+		.custom-dropdown:hover .custom-dropbtn {
+		  background-color: transparent;
+		  color: #2f965d;
+		}
+
+		
     </style>
 
 
@@ -76,24 +124,28 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'onedayclass_filter' %}">원데이클래스 </a>
             </li>
-			      <li class="nav-item">
+			<li class="nav-item">
               <a class="nav-link" href="{% url 'notice_list' %}">공지사항 </a>
             </li>
-		        {% if request.user.is_authenticated %}
-            <li class="nav-item">
-			        <a class="nav-link" href="{% url 'mypage' %}">마이페이지 <span class="sr-only">(current)</span></a>
-			      </li>
-			      {% endif %}
           </ul>
           <form class="form-inline justify-content-end">
-			    {% if request.user.is_authenticated %}
-			       <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'logout' %}">로그아웃</a>&nbsp
-			    {% else %}
-            <a id="navbtn" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signin' %}">로그인</a>&nbsp
+			{% if request.user.is_authenticated %}
+				<span id="userID" style="color:black;">ID: {{request.user}}님</span> &nbsp;&nbsp;
+				<div class="custom-dropdown">
+				  <button id="navbtn" class="custom-dropbtn btn btn-sm btn-success my-2 my-sm-0">내 정보 관리</button>
+				  <div class="custom-dropdown-content">
+					<a href="{% url 'mypage' %}">마이페이지</a>
+					<a href="{% url 'cart_list' %}">센터 찜목록</a>
+					<a href="{% url 'logout' %}">로그아웃</a>
+				  </div>
+				</div>
+			{% else %}
+            <a id="navbtn2" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signin' %}">로그인</a>&nbsp
             <a id="navbtn1" class="btn btn-sm btn-success my-2 my-sm-0" href="{% url 'signup' %}">회원가입</a>
-			    {% endif %}
+			{% endif %}
           </form>
         </div>
+	  </div>
     </nav>
 
 	<main role="main">
@@ -141,6 +193,7 @@
 	<!-- Bootstrap core JavaScript -->
 	  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 	  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+	  
 
 	  <!-- Plugin JavaScript -->
 	  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
@@ -154,22 +207,36 @@
 	  <script>
 		window.onscroll = function() {
 		  growShrink()
+		  growShrink2()
 
 		};
 		function growShrink() {
 		  var Logo = document.getElementById("Logo")
-		  var navbtn = document.getElementById("navbtn")
-		  var navbtn1 = document.getElementById("navbtn1")
+		  var userID = document.getElementById("userID")
 		  if (document.body.scrollTop > 100|| document.documentElement.scrollTop > 100) {
 			Logo.src='{%static 'img/prerana_logo_noletter_white.png'%}';
 			Logo.style.width = '30px';
+			userID.style.color='white';
+			
+		  } else {
+			Logo.src='{%static 'img/prerana_logo_noletter.png'%}';
+			Logo.style.width = '50px';
+			userID.style.color='black';
+			
+		  }
+		}
+		function growShrink2() {
+		  var navbtn = document.getElementById("navbtn")
+		  var navbtn1 = document.getElementById("navbtn1")
+		  var navbtn2 = document.getElementById("navbtn2")		  
+		  if (document.body.scrollTop > 100|| document.documentElement.scrollTop > 100) {
 			navbtn.className = 'btn btn-sm btn-outline-light my-2 my-sm-0';
+			navbtn2.className = 'btn btn-sm btn-outline-light my-2 my-sm-0';
 			navbtn1.className = 'btn btn-sm btn-outline-light my-2 my-sm-0';
 		  } else {
-		    Logo.src='{%static 'img/prerana_logo_noletter.png'%}';
-			Logo.style.width = '50px';
 			navbtn.className = 'btn btn-sm btn-success my-2 my-sm-0';
-			navbtn1.className = 'btn btn-sm btn-success my-2 my-sm-0';
+			navbtn2.className = 'btn btn-sm btn-success my-2 my-sm-0';
+			navbtn1.className = 'btn btn-sm btn-success my-2 my-sm-0';			
 		  }
 		}
 	  </script>

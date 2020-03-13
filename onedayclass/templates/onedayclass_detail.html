@@ -90,7 +90,7 @@
 				<div class="row">
 					<div class="col">
 						<ul>
-							<li>일정: {{ onedayclass.date }}</li>
+							<li>일정: {{ onedayclass.date|date:"Y년 m월 d일" }}</li>
 							<li>장소: {{ onedayclass.place }} </li>
 							<li>문의전화: {{ onedayclass.sns }}</li>
 						</ul>
