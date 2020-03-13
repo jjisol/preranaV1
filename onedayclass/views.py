@@ -11,8 +11,11 @@ def detail(request, id):
 def filter(request):
     onedayclass_list = OnedayClass.objects.all()
     filter = OnedayClassFilter(request.GET, queryset=onedayclass_list)
-    if request.user.is_authenticated:
-        cart = Cart.objects.get(user=request.user)
-        return render(request, 'onedayclass_filter.html', {'filter':filter, 'cart':cart})
-    else:
-        return render(request, 'onedayclass_filter.html', {'filter':filter})
+    try:
+        if request.user.is_authenticated:
+            cart = Cart.objects.get(user=request.user)
+            return render(request, 'onedayclass_filter.html', {'filter':filter, 'cart':cart})
+        else:
+            return render(request, 'onedayclass_filter.html', {'filter':filter})
+    except Exception as e:
+            return render(request, 'onedayclass_filter.html', {'filter':filter})

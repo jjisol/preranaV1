@@ -117,7 +117,6 @@
 				  <div class="card mb-4 box-shadow" style="height:600px;">
 					<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 					<div class="like-position">
-						{% if request.user.is_authenticated %}
 							{% if cart|onedayclass_in_cart:onedayclass.id %}
 							<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like liked">
 								<i class="fa fa-heart"></i>
@@ -127,11 +126,6 @@
 								<i class="fa fa-heart"></i>
 							</button></a>
 							{% endif %}
-						{% else %}
-						<button class="button button-like">
-							<i class="fa fa-heart"></i>
-						</button>
-						{% endif %}
 					</div>
 					<div class="card-body">
 						<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
