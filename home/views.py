@@ -9,11 +9,15 @@ from users.models import Cart
 def HomePageView(request):
     centers = Center.objects.all().order_by('id')[:7]
     onedayclasses = OnedayClass.objects.all().order_by('id')[:7]
-    if request.user.is_authenticated:
-        cart = Cart.objects.get(user=request.user)
-        return render(request, 'home/home.html',
-            {'centers':centers, 'onedayclasses':onedayclasses, 'cart':cart})
-    else:
+    try:
+        if request.user.is_authenticated:
+            cart = Cart.objects.get(user=request.user)
+            return render(request, 'home/home.html',
+                {'centers':centers, 'onedayclasses':onedayclasses, 'cart':cart})
+        else:
+            return render(request, 'home/home.html',
+                {'centers':centers, 'onedayclasses':onedayclasses})
+    except Exception as e:
         return render(request, 'home/home.html',
             {'centers':centers, 'onedayclasses':onedayclasses})
 

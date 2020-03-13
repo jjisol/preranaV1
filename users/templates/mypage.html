@@ -19,8 +19,8 @@
           <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-1">개인정보</h3>
             <div class="mb-3 text-muted">수정하기 버튼을 통해 고객님의 개인정보를 변경하실 수 있습니다.</div>
-            <span class="mb-2">아이디: {{ information.username}}</span>
-            <span class="mb-2">이메일: {{ information.email }}</span>
+            <span class="mb-2">아이디: {{ user.username }}</span>
+            <span class="mb-2">이메일: {{ user.email }}</span>
             <div class="text-right">
               <a href="{% url 'update' %}"><button class="btn btn-outline-success btn-sm col-md-2">수정하기</button></a>
             </div>
@@ -58,7 +58,7 @@
           <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">약관 및 정책</h3>
             <div class="mb-1 text-muted"></div>
-            <a href="#">
+            <a href="{% url 'terms' %}">
               <div class="text-right">
                 <button class="btn btn-outline-success btn-sm col-md-2">확인하기</button>
               </div>
@@ -86,6 +86,4 @@
       alert('{{ message }}');
   </script>
   {% endif %}
-
 {% endblock %}
- 

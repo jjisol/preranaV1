@@ -11,6 +11,7 @@ urlpatterns = [
     path('findUsername/', views.findUsername, name='findUsername'),
     path('findPassword/', views.findPassword, name='findPassword'),
 	path('servicecenter/', views.service_center, name='service_center'),
+    path('terms/', views.terms, name='terms'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
     path('update/', views.update, name='update'),
