@@ -99,8 +99,8 @@ def signin(request):
         return render(request, 'login.html', {'form': form})
 
 def mypage(request):
-    information = CustomUser.objects.get(username=request.user)
-    return render(request, 'mypage.html', {'information':information})
+    user = CustomUser.objects.get(username=request.user)
+    return render(request, 'mypage.html', {'user':user})
 
 @csrf_exempt
 @login_required
@@ -178,31 +178,33 @@ def findPassword(request):
 
 @login_required
 def update(request):
+    user = CustomUser.objects.get(username=request.user)
     if request.method == 'POST':
         user_change_form = CustomUserChangeForm(request.POST, instance=request.user)
         if user_change_form.is_valid():
             user_change_form.save()
-            return redirect('mypage')
+            return render(request, 'mypage.html', {'user':user, 'message':'회원정보가 수정되었습니다.'})
         else:
             user_change_form = CustomUserChangeForm(instance = request.user)
             return render(request, 'editAccount.html',
-                {'user_change_form':user_change_form, 'message':'유효하지 않은 형식입니다. 다시 입력해주세요.'})
+                {'user_change_form':user_change_form, 'user':user, 'message':'유효하지 않은 형식입니다. 다시 입력해주세요.'})
     else:
 	    user_change_form = CustomUserChangeForm(instance = request.user)
-	    return render(request, 'editAccount.html', {'user_change_form':user_change_form})
+	    return render(request, 'editAccount.html', {'user_change_form':user_change_form, 'user':user})
 
 @login_required
 def password(request):
     if request.method == 'POST':
+        user = CustomUser.objects.get(username=request.user)
         password_change_form = PasswordChangeForm(request.user, request.POST)
-
         if password_change_form.is_valid():
             password_change_form.save()
             update_session_auth_hash(request, request.user)
-            return redirect('mypage')
+            return render(request, 'mypage.html', {'user':user, 'message':'회원정보가 수정되었습니다.'})
         else:
             password_change_form = PasswordChangeForm(request.user)
-            return render(request, 'password.html', {'password_change_form':password_change_form})
+            return render(request, 'password.html',
+            {'password_change_form':password_change_form, 'message':'유효하지 않은 형식입니다. 다시 입력해주세요.'})
 
     else:
         password_change_form = PasswordChangeForm(request.user)
@@ -279,7 +281,10 @@ def del_from_cart_onedayclass(request, id):
     cart.save()
     messages.success(request, "찜목록에서 삭제되었습니다.")
     return redirect('cart_list')
-	
+
 @login_required
 def service_center(request):
     return render(request, 'service_center.html', {})
+
+def terms(request):
+    return render(request, 'terms.html', {})
