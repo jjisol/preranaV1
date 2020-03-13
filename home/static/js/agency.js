@@ -41,13 +41,7 @@
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
   
-  //like function
-  $(function() {
-  $('.button-like')
-    .bind('click', function(event) {
-      $(".button-like").toggleClass("liked");
-    })
-});
+ 
 
 
 

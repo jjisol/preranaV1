@@ -10,11 +10,22 @@
 </header>
 
 <article>
-	  <div class="swiper-container" style="height:570px;">
+	<div class="text-center">
+		<div>
+			<h1>찜 목록</h1>
+			<div class="mt-3 text-muted">눈 여겨 봤던 이벤트, 센터, 클래스를 한 눈에 볼 수 있습니다.</div>
+			<div class="text-muted">찜 목록에서 제외시키고 싶다면 하트를 눌러주세요.</div>
+		</div>
+		<div class="pb-5" style="background-color:#F7F8F8;">
+		<hr class="my-4">
+		<div>
+		  <h2 class="mb-5" style="color:#2f956d">이벤트 목록</h2>
+		</div>
+	  <div class="swiper-container" style="height:580px;">
 		<div class="swiper-wrapper">
 				{% for event in events %}
 				<div class="swiper-slide">
-					<div class="card box-shadow" style="height:560px;">
+					<div class="card box-shadow" style="height:580px;">
 						<img class="card-img-top" src="{{ event.event.url }}" alt="Card image cap">
 						<div class="like-position">
 						  <a href="{% url 'del_from_cart_event' id=event.id %}"><button class="button button-like">
@@ -36,25 +47,18 @@
 				{% endfor %}
 
 		</div>
-				<!-- 네비게이션 -->
-	  
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon " aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-			</a>
 	  </div>
 		
-	<br><br><br>
-
-	  <div class="swiper-container" style="height:570px;">
+	<br>
+	<hr class="my-4">
+	  <div>
+		  <h2 class="mb-5" style="color:#2f956d">센터 목록</h2>
+	  </div>
+	  <div class="swiper-container" style="height:580px;">
 		<div class="swiper-wrapper">
 				{% for center in centers %}
 				<div class="swiper-slide">
-					<div class="card box-shadow" style="height:560px;">
+					<div class="card box-shadow" style="height:580px;">
 						{% for image in center.center_image.all %}
 						<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
 						{% endfor %}
@@ -77,24 +81,17 @@
 				</div>
 				{% endfor %}
 		</div>
-				<!-- 네비게이션 -->
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon " aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-			</a>
 	  </div>
-
 	<br>
-
-	  <div class="swiper-container" style="height:570px;">
+	<hr class="my-4">
+	  <div>
+		  <h2 class="mb-5" style="color:#2f956d">원데이클래스 목록</h2>
+	  </div>
+	  <div class="swiper-container" style="height:580px;">
 		<div class="swiper-wrapper">
 				{% for onedayclass in onedayclasses %}
 				<div class="swiper-slide">
-					<div class="card box-shadow" style="height:560px;">
+					<div class="card box-shadow" style="height:580px;">
 						<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 						<div class="like-position">
 						  <a href="{% url 'del_from_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like">
@@ -115,17 +112,9 @@
 				</div>
 				{% endfor %}
 		</div>
-				<!-- 네비게이션 -->
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon " aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-			</a>
+		</div>
 	  </div>
-
+	</div>
 	{% if messages %}
 	  {% for message in messages %}
 	  <script>
