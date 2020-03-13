@@ -212,7 +212,7 @@ def password(request):
 
 @login_required
 def cart_list(request):
-    cart = Cart.objects.get(user=request.user)
+    cart, created = Cart.objects.get_or_create(user=request.user)
     centers = cart.centers.all()
     events = cart.events.all()
     onedayclasses = cart.onedayclasses.all()
