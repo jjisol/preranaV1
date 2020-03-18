@@ -132,7 +132,7 @@
 			{% if request.user.is_authenticated %}
 				<span id="userID" style="color:black;">ID: {{request.user}}님</span> &nbsp;&nbsp;
 				<div class="custom-dropdown">
-				  <button id="navbtn" class="custom-dropbtn btn btn-sm btn-success my-2 my-sm-0">내 정보 관리</button>
+				  <button id="navbtn" class=" btn btn-sm btn-success my-2 my-sm-0">내 정보 관리</button>
 				  <div class="custom-dropdown-content">
 					<a href="{% url 'mypage' %}">마이페이지</a>
 					<a href="{% url 'cart_list' %}">센터 찜목록</a>
