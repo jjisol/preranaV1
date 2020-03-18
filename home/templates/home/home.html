@@ -19,13 +19,13 @@
 		  <!-- Slide One - Set the background image for this slide in the line below -->
 		  <div class="carousel-item" style="background-image: url({% static 'img/header-bg.jpg' %})">
 			<div class="carousel-caption d-none d-md-block">
-			  
+
 			</div>
 		  </div>
 		  <!-- Slide One - Set the background image for this slide in the line below -->
 		  <div class="carousel-item" style="background-image: url({% static 'img/header-bg.jpg' %})">
 			<div class="carousel-caption d-none d-md-block">
-			  
+
 			</div>
 		  </div>
 
@@ -54,8 +54,7 @@
 						<div class="card box-shadow" style="height:560px;">
 							<img class="card-img-top" src="{{ center.event.url }}" alt="Card image cap">
 						<div class="like-position">
-							{% if request.user.is_authenticated %}
-								{% if cart|center_in_cart:center.id %}
+								{% if cart|event_in_cart:center.id %}
 								<a href="{% url 'add_to_cart_event' id=center.id %}"><button class="button button-like liked">
 									<i class="fa fa-heart"></i>
 								</button></a>
@@ -64,11 +63,6 @@
 									<i class="fa fa-heart"></i>
 								</button></a>
 								{% endif %}
-							{% else %}
-							<button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button>
-							{% endif %}
 						</div>
 						<div class="card-body">
 							<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}"
@@ -85,9 +79,8 @@
 					</div>
 					{% endfor %}
     		</div>
-		
 			</div>
-			
+
 
 			<br><br>
 			<div>
@@ -103,7 +96,6 @@
 							<img class="card-img-top" src="{{ image.image1.url }}" alt="Card image cap">
 						{% endfor %}
 						<div class="like-position">
-							{% if request.user.is_authenticated %}
 								{% if cart|center_in_cart:center.id %}
 								<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like liked">
 									<i class="fa fa-heart"></i>
@@ -113,11 +105,6 @@
 									<i class="fa fa-heart"></i>
 								</button></a>
 								{% endif %}
-							{% else %}
-							<button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button>
-							{% endif %}
 						</div>
 						<div class="card-body">
 							<h5 class="card-title"><a href="{% url 'center_detail' id=center.id %}"
@@ -134,7 +121,6 @@
 					</div>
 					{% endfor %}
     		</div>
-			
 			</div>
 
 			<br><br>
@@ -149,7 +135,6 @@
 						<div class="card box-shadow" style="height:560px;">
 							<img class="card-img-top" src="{{ onedayclass.image.url }}" alt="Card image cap">
 						<div class="like-position">
-							{% if request.user.is_authenticated %}
 								{% if cart|onedayclass_in_cart:onedayclass.id %}
 								<a href="{% url 'add_to_cart_onedayclass' id=onedayclass.id %}"><button class="button button-like liked">
 									<i class="fa fa-heart"></i>
@@ -159,11 +144,6 @@
 									<i class="fa fa-heart"></i>
 								</button></a>
 								{% endif %}
-							{% else %}
-							<button class="button button-like">
-								<i class="fa fa-heart"></i>
-							</button>
-							{% endif %}
 						</div>
 						<div class="card-body">
 							<h5 class="card-title"><a href="{% url 'onedayclass_detail' id=onedayclass.id %}"
@@ -181,7 +161,6 @@
 					</div>
 					{% endfor %}
     		</div>
-		
 			</div>
 		</div>
 		{% if messages %}
@@ -214,7 +193,7 @@
     		el : '.swiper-pagination',
     		clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
     	},
-    
+
     });
 
     $('.myCarousel').carousel({interval:3000});

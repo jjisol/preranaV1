@@ -14,7 +14,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .tokens import account_activation_token
+from .tokens import account_activation_token, password_reset_token
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordChangeForm
@@ -151,7 +151,7 @@ def findPassword(request):
                 user = CustomUser.objects.get(username=username, email=email)
                 if user is not None:
                     current_site = get_current_site(request)
-                    token = account_activation_token.make_token(user)
+                    token = password_reset_token.make_token(user)
                     mail_subject = 'PRERANA에서 임시 비밀번호를 알려드립니다.'
                     message = render_to_string('password_email.html', {
                         'user': user,
@@ -212,50 +212,57 @@ def password(request):
 
 @login_required
 def cart_list(request):
-    cart = Cart.objects.get(user=request.user)
+    cart, created = Cart.objects.get_or_create(user=request.user)
     centers = cart.centers.all()
     events = cart.events.all()
     onedayclasses = cart.onedayclasses.all()
     return render(request, 'cart_list.html',
         {'centers':centers, 'events':events, 'onedayclasses':onedayclasses})
 
-@login_required
+
 def add_to_cart_center(request, id):
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    try:
-        center = cart.centers.get(id=id)
-        if center is not None:
-            messages.warning(request, "이미 찜목록에 있는 센터입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
-    except Exception as e:
-        cart.centers.add(id)
-        cart.save()
-        messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        try:
+            center = cart.centers.get(id=id)
+            if center is not None:
+                messages.warning(request, "이미 찜목록에 있는 센터입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
+        except Exception as e:
+            cart.centers.add(id)
+            cart.save()
+            messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    else:
+        messages.warning(request, "로그인 후 이용하실 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-@login_required
 def add_to_cart_event(request, id):
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    try:
-        event = cart.events.get(id=id)
-        if event is not None:
-            messages.warning(request, "이미 찜목록에 있는 이벤트입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
-    except Exception as e:
-        cart.events.add(id)
-        cart.save()
-        messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        try:
+            event = cart.events.get(id=id)
+            if event is not None:
+                messages.warning(request, "이미 찜목록에 있는 이벤트입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
+        except Exception as e:
+            cart.events.add(id)
+            cart.save()
+            messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    else:
+        messages.warning(request, "로그인 후 이용하실 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-@login_required
 def add_to_cart_onedayclass(request, id):
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    try:
-        onedayclass = cart.onedayclasses.get(id=id)
-        if onedayclass is not None:
-            messages.warning(request, "이미 찜목록에 있는 원데이클래스입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
-    except Exception as e:
-        cart.onedayclasses.add(id)
-        cart.save()
-        messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        try:
+            onedayclass = cart.onedayclasses.get(id=id)
+            if onedayclass is not None:
+                messages.warning(request, "이미 찜목록에 있는 원데이클래스입니다. 찜목록 삭제는 마이페이지에서 할 수 있습니다.")
+        except Exception as e:
+            cart.onedayclasses.add(id)
+            cart.save()
+            messages.success(request, "찜목록에 추가되었습니다. 찜목록은 마이페이지에서 볼 수 있습니다.")
+    else:
+        messages.warning(request, "로그인 후 이용하실 수 있습니다.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required

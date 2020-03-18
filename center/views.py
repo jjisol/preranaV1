@@ -17,10 +17,13 @@ def detail(request, id):
 def filter(request):
     center_list = Center.objects.all()
     center_filter = CenterFilter(request.GET, queryset=center_list)
-    if request.user.is_authenticated:
-        cart = Cart.objects.get(user=request.user)
-        return render(request, 'center_filter.html', {'filter':center_filter, 'cart':cart})
-    else:
+    try:
+        if request.user.is_authenticated:
+            cart = Cart.objects.get(user=request.user)
+            return render(request, 'center_filter.html', {'filter':center_filter, 'cart':cart})
+        else:
+            return render(request, 'center_filter.html', {'filter':center_filter})
+    except Exception as e:
         return render(request, 'center_filter.html', {'filter':center_filter})
 
 def view_on_map(request):

@@ -15,7 +15,7 @@
           {% if notice.published_date %}
                 <div class="card-subtitle text-muted">
 					작성자: {{ notice.author }}
-					날짜: {{ notice.published_date }}
+					날짜: {{ notice.published_date|date:"Y.m.d G:i" }}
 				</div>
           {% endif %}
 		  <hr class="mb-5">

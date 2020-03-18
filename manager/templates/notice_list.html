@@ -40,7 +40,7 @@
 							</a>
 						</td>
 						<td>{{ notice.author }}</td>
-						<td>{{ notice.published_date }}</td>
+						<td>{{ notice.published_date|date:"Y.m.d G:i" }}</td>
 					</tr>
 				{% endfor %}
 				</tbody>
