@@ -122,10 +122,14 @@ var geocoder = new kakao.maps.services.Geocoder();
 var places = [
   {% for center in center_list %}
   {
+    {% for image in center.center_image.all %}
+    image: '{{ image.image1.url }}',
+    {% endfor %}
     groupAddress: '{{ center.address }}',
     place_name: '{{ center.name }}',
     phone: '{{ center.phone }}',
-    site: '{{ center.site }}'
+    site: '{{ center.site }}',
+    id: '{{ center.id }}'
   },
   {% endfor %}
 ];
@@ -207,7 +211,7 @@ function displayPlaces(places) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
-
+    var url = '{% url 'center_detail' 999 %}'.replace (999, places.id);
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
@@ -216,6 +220,8 @@ function getListItem(index, places) {
     itemStr += '    <span>' +  places.groupAddress + '</span>';
 
     itemStr += '<span><a href="' + places.site + '" class="link">홈페이지</a></span>';
+
+    itemStr += '<a href=\"' + url + '\">자세히보기</a>';
 
     itemStr += '  <span class="tel">' + places.phone  + '</span>' +
                 '</div>';
@@ -241,7 +247,10 @@ function displayCustomOverlay(marker, place) {
                         place.place_name +
             '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
             '        </div>' +
-            '        <div class="body">' +
+            '        <div class="body">'  +
+            '            <div class="img">' +
+            '                <img src="' + place.image + '" width="73" height="70">' +
+            '            </div>' +
             '            <div class="desc">' +
             '                <div class="ellipsis">' + place.groupAddress + '</div>' +
             '                   <div class="ellipsis">' + place.phone + '</div>' +
