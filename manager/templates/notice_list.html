@@ -34,7 +34,7 @@
 				<tbody>
 				{% for notice in notices %}
 					<tr>
-						<td>번호내용</td>
+						<td>{{ forloop.counter }}</td>
 						<td>
 							<a href="{% url 'notice_detail' id=notice.id %}">{{ notice.title }}
 							</a>
@@ -52,7 +52,7 @@
 		  alert('{{message}}');
 		</script>
 		{% endif %}
-			
+
 	</div>
 </article>
 {% endblock %}
