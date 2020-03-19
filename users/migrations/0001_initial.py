@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('center', '__first__'),
+        ('center', '0001_initial'),
         ('auth', '0011_update_proxy_permissions'),
         ('onedayclass', '0001_initial'),
     ]
