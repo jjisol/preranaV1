@@ -2,5 +2,5 @@
 안녕하세요. {{ user.username }}님,
 prerana에 가입해주셔서 감사합니다.
 회원가입을 완료하기 위해 아래 링크를 클릭해주세요.
-http://127.0.0.1:8000{% url 'activate' uidb64=uid token=token %}
+회원가입 링크: http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
 {% endautoescape %}
