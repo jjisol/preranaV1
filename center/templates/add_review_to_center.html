@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <h1>리뷰를 작성해주세요.</h1>
+    <form method="POST" class="review-form">{% csrf_token %}
+        <div class="form group row">
+          <label for="author" class="col-sm-3 col-form-label">작성자</label>
+          <div class="col-sm-9">
+            {{ request.user.username }}
+          </div>
+        </div>
+        <div class="form group row">
+          <label for="{{ form.text.id_for_label }}" class="col-sm-3 col-form-label">리뷰</label>
+          <div class="col-sm-9">
+          <input class="form-control" id="{{ form.text.id_for_label }}"
+            name="{{ form.text.html_name }}" type="text" required />
+          </div>
+        </div>
+        <button type="submit" class="save btn btn-default">작성하기</button>
+    </form>
+{% endblock %}

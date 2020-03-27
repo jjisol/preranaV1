@@ -36,3 +36,13 @@ class CenterImage(models.Model):
 
     def __str__(self):
         return self.center.name
+
+class CenterReview(models.Model):
+    center = models.ForeignKey(Center, on_delete=models.CASCADE,
+                    related_name='center_review', verbose_name='센터명')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.text

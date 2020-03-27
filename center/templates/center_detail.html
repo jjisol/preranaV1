@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load tags %}
 {% block content %}
 
 	 <!-- Header -->
@@ -29,6 +30,17 @@
 						<address>
 							<span>센터명 </span>
 							<h3>{{ center.name }}</h3>
+							<div class="like-position">
+									{% if cart|center_in_cart:center.id %}
+									<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like liked">
+										<i class="fa fa-heart"></i>
+									</button></a>
+									{% else %}
+									<a href="{% url 'add_to_cart_center' id=center.id %}"><button class="button button-like">
+										<i class="fa fa-heart"></i>
+									</button></a>
+									{% endif %}
+							</div>
 						</address><br>
 						<address>
 						  <p title="phone">전화번호: {{ center.phone }}</p>
@@ -140,8 +152,50 @@
 						</ul>
 					</div>
 				</div>
+				<br><br>
+				<div class="row">
+					<div class="col">
+						<h2>센터 리뷰</h2><a class="btn btn-default" href="{% url 'add_review_to_center' id=center.id %}">리뷰 작성하기</a>
+						<hr style="margin: 30px 0; background-color:#9cbeb0; height: 1px; border:0;">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						{% for review in page_obj %}
+							<div class="review">
+								<div class="date">{{ review.created_date }}</div>
+								<strong>{{ review.author }}</strong>
+								<p>{{ review.text|linebreaks }}</p>
+							</div>
+						{% empty %}
+							<p>리뷰를 작성해주세요</p>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="pagination">
+					<span class="step-links">
+					{% if page_obj.has_previous %}
+						<a href="?page=1">&laquo; first</a>
+						<a href="?page={{ page_obj.previous_page_number }}">previous</a>
+					{% endif %}
+					<span class="current">
+						Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+					</span>
+					{% if page_obj.has_next %}
+						<a href="?page={{ page_obj.next_page_number }}">next</a>
+						<a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+					{% endif %}
+					</span>
+				</div>
 			  </div>
 			</div>
+			{% if messages %}
+				{% for message in messages %}
+				<script>
+					alert('{{ message }}');
+				</script>
+			{% endfor %}
+			{% endif %}
 		</div>
 
 
